@@ -1,0 +1,14 @@
+File handling refers to the process of performing operations on a file such as creating, opening, reading, writing and closing it, through a programming interface. 
+It involves managing the data flow between the program and the file system on the storage device, ensuring that data is handled safely and efficiently.
+To open a file we can use open() function, which requires file path and mode as arguments.
+Writing to a file is done using file.write() which writes the specified string to the file. 
+If the file exists, its content is erased.
+If it doesn't exist, a new file is created.
+Reading a file can be achieved by file.read() which reads the entire content of the file.
+After reading the file we can close the file using file.close() which closes the file after reading it, which is necessary to free up system resources.
+Closing a file is essential to ensure that all resources used by the file are properly released.
+file.close() method closes the file and ensures that any changes made to the file are saved.
+with statement is used for resource management.
+It ensures that file is properly closed after its suite finishes, even if an exception is raised.
+with open() as method automatically handles closing the file once the block of code is exited, even if an error occurs.
+ameen

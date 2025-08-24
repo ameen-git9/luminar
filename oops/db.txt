@@ -1,0 +1,51 @@
+# CRUD  -> creste, read, update, delete.
+
+# django  -> sqlite3,Mysql
+
+# framework ->
+
+# DBMS -> database management system.
+# RDBMS  -> relational database mnagement system.
+
+
+
+# mysql
+
+
+'''                          mysql workbench       '''
+
+
+# workbench
+# sql -> structured query language.
+
+
+# -- SHOW DATABASES;
+# /* CREATE DATABASE database_name
+
+# */
+
+
+
+#  DROP DATABASE ameen;  -> delete database.
+
+#  /* create a table
+# create table table_name(colname datatype,colname datatype);
+# */
+
+# /* delete a table
+# DROP TABLE student;
+# # */
+
+
+# SHOW DATABASES;
+#  CREATE DATABASE ameen;
+#  USE ameen;
+#  SHOW TABLES;
+#  DROP DATABASE ameen;
+# /* create a table
+create table table_name(colname datatype,colname datatype);
+
+# CREATE TABLE student(id int,name varchar(20),place varchar(25));
+
+# /* delete a table */
+ DROP TABLE student;
