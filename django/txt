@@ -1,0 +1,11 @@
+pip install virtualenv
+virtualenv env-name / py -m virtualenv env_name
+env_name\Scripts\activate
+pip install django
+django-admin startproject "project_name"
+cd project_name
+py manage.py startapp app-name
+py manage.py runserver
+
+
+
