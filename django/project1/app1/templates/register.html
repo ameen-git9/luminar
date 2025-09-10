@@ -1,26 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
+
 <body>
     <h1>DJANGO TEMPLATES</h1>
-   <h4> register.....</h4>
+    <h4> register.....</h4>
 
 
-   <!-- {{studlist}} -->
+    <!-- {{studlist}} -->
 
 
-   <ul>
-    {% for i in studlist %}
-    <li>{{i}}</li>
-    {% endfor %}
-   </ul>
+    <ul>
+        {% for i in studlist %}
+        <li>{{i}}</li>
+        {% endfor %}
+    </ul>
 
-   
+    {% if studlist %}
+        <ul>
+            {% for i in studlist %}
+            <li>{{i}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No students</h3>
+        {%endif%}
 
-    
+
+            <!-- <img src="{% static 'images/pexels.jpg'%}" alt=""> -->
+             
+
 </body>
+
 </html>

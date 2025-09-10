@@ -7,5 +7,15 @@ cd project_name
 py manage.py startapp app-name
 py manage.py runserver
 
+{% load static %}
+ <link rel="stylesheet" href="{% static 'style.css' %}">
 
+ ------------------------------------------------------
 
+                dbsqlite3
+ python manage.py migrate    ---terminal---
+
+--------------------------------------------
+
+ to create new user --- like user admin
+ py manage.py createsuperuser
