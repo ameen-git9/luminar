@@ -10,14 +10,3 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
-    
-
-
-
-
-
-
-
-
-#py manage.py makemigrations
-# py manage.py migrate
