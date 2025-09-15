@@ -9,4 +9,5 @@ class Student(models.Model):
     phone = models.CharField(max_length=15, default="0000000000")
 
     def __str__(self):
-        return self.name
+        return self.name 
+    
