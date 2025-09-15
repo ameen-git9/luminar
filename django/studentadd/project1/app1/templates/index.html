@@ -21,7 +21,7 @@
 
     <title>Hello, world!</title>
   </head>
-  <body class="d-flex vw-100 vh-100 align-items-center justify-content-center">
+  <body class="d-flex flex-column vw-100 vh-100 align-items-center justify-content-center">
 
     <table class="table table-bordered">
         <tr>
@@ -44,6 +44,8 @@
             </tr>
         {% endfor %}
     </table>
+    <a href="{% url 'Register_View' %}" class="btn btn-info">ADD STUDENT</a>
+    <!-- <a href="regis" class="btn btn-info">ADD STUDENT</a> -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 
