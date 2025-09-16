@@ -23,8 +23,9 @@
   </head>
   <body class="d-flex flex-column vw-100 vh-100 align-items-center justify-content-center">
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <tr>
+            <th>sl.no</th>
             <th>ID</th>
             <th>NAME</th>
             <th>PLACE</th>
@@ -34,17 +35,22 @@
         </tr>
         {%for stud in students %}
             <tr>
+                <td>{{forloop.counter}} </td>
                 <td>{{stud.id}}</td>
                 <td>{{stud.name}}</td>
                 <td>{{stud.place}}</td>
                 <td>{{stud.email}}</td>
                 <td>{{stud.age}}</td>
                 <td>{{stud.phone}}</td>
-                
+                <td>
+                  <a href="{% url 'update_student' stud.id %}" class="btn btn-warning">Update</a>
+                  <a href="{%url 'delete_student' stud.id %}" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
         {% endfor %}
     </table>
     <a href="{% url 'Register_View' %}" class="btn btn-info">ADD STUDENT</a>
+    
     <!-- <a href="regis" class="btn btn-info">ADD STUDENT</a> -->
 
     <!-- Optional JavaScript; choose one of the two! -->
