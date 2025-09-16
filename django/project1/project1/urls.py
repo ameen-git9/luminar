@@ -24,3 +24,7 @@ urlpatterns = [
     path('reg',views.register),
     path('',views.homeview.as_view())
 ]
+
+
+
+
