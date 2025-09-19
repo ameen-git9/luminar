@@ -17,26 +17,26 @@
                 {% csrf_token %}
                 <div class="mb-3 ">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required value="{{employee.name}}">
+                    <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
                     <label for="age" class="form-label">Salary</label>
-                    <input type="number" class="form-control" id="age" name="salary" required value="{{employee.salary}}">
+                    <input type="number" class="form-control" id="age" name="salary" required>
                 </div>
                 <div class="mb-3">
                     <label for="place" class="form-label">Designation</label>
-                    <input type="text" class="form-control" id="place" name="designation" required value="{{employee.designation}}">
+                    <input type="text" class="form-control" id="place" name="designation" required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required value="{{employee.email}}">
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Phone</label>
-                    <input type="number" class="form-control" id="email" name="phone" required value="{{employee.phone}}">
+                    <input type="number" class="form-control" id="email" name="phone" required>
                 </div>
                 <div class=" d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary ">UPDATE</button>
+                    <button type="submit" class="btn btn-primary ">ADD</button>
                 </div> 
             </form>
         </div>
