@@ -26,4 +26,5 @@ urlpatterns = [
     path('delete/<int:id>',views.DeleteEmployee.as_view(),name="delete_employee"),
     path('update/<int:id>',views.UpdateEmployee.as_view(),name="update_employee"),
     path('emp/reg',app2_views.EmployeeRgistration.as_view(),name="reg"),
+    path('emp/update/<int:id>',app2_views.EmpUpdate.as_view(),name="empupdate"),
 ]

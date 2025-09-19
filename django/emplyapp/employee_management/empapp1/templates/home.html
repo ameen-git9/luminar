@@ -44,6 +44,7 @@
           <td>{{empapp1.phone}}</td>
           <td>
             <a href="{% url 'update_employee' empapp1.id %}" class="btn btn-warning">Update</a>
+            <a href="{% url 'empupdate' empapp1.id %}" class="btn btn-warning">empUpdate</a>
             <a href="{% url 'delete_employee' empapp1.id %}" class="btn btn-danger">Delete</a>
           </td>
         </tr>
