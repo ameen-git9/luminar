@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from empapp1.models import Employee
-from app2.forms import Employeesform
+from app2.forms import Employeesform,EmployeeModelForm
 from django.views import View
 from django.http import HttpResponse
 
@@ -41,3 +41,16 @@ class EmpUpdate(View):
             emp.phone=phone
             emp.save()
             return redirect("HomeView")
+        
+
+class ModelRegistration(View):
+    def get(self,request):
+        form=EmployeeModelForm()
+        return render(request, 'emp_register.html', {'form':form})
+    def post(self, request):
+        form-EmployeeModelForm (request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home_view")
+                      
+
