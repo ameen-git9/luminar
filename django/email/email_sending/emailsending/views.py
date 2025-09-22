@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.mail import send_mail,settings
 from django.views import View 
 from django.http import HttpResponse
+from django.contrib import messages
 
 # Create your views here.
 
@@ -23,7 +24,8 @@ class EmailSend(View):
         to=request.POST.get("email")
         from_addrr=settings.EMAIL_HOST_USER
         send_mail(subject,massege,from_addrr,[to])
-        return HttpResponse("email sent successfully")
+        messages.success(request,"email sent successfully")
+        return render(request,"mail.html")
 
 
 
