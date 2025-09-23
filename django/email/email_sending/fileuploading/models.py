@@ -9,3 +9,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+
+    # pip install pillow - for image uploading
