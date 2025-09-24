@@ -21,6 +21,7 @@ from todo1 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("register",views.UserRegisterView.as_view(),name="register"),
-    path("",views.UserLoginView.as_view(),name="login"),
+    path("",views.UserLoginView.as_view(),name="logview"),
+    path("home",views.HomeView.as_view(),name="homeview"),
 
 ]

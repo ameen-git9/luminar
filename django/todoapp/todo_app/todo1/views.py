@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import View
 from todo1.forms import UserRegisterForm,UserLogin
 from django.http import HttpResponse
@@ -16,9 +16,10 @@ class UserRegisterView(View):
         if form.is_valid():
             User.objects.create_user(**form.cleaned_data)
             messages.success(request,"registration successfull")
-            return HttpResponse("registration successfull")
+            return redirect('logview')
         else:
-            return HttpResponse("invalid input")
+            messages.warning(request,"invalid  uusername or password")
+            return redirect('register')
         
 
 
@@ -32,9 +33,15 @@ class UserLoginView(View):
         password=request.POST.get("password")
         res=authenticate(request,username=username,password=password)
         if res:
-            return HttpResponse("login seccessfull")
+            messages.success(request,"successfull")
+            return redirect('homeview')
         else:
-            return HttpResponse("invalid username or password")
+            messages.warning(request,"invalid username or password")
+            return redirect('logview')
     
+
     
-    
+class HomeView(View):
+    def get(self,request):
+        return render(request,'home.html')
+        
