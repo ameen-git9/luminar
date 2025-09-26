@@ -1,56 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{% block title %} LOGIN PAGE {% endblock %}</title>
 
-    <!-- Bootstrap CSS -->
-    <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" />
+{% block content %}
 
-    <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
-    <!-- https://cdnjs.com/libraries/font-awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-
-    <title>Hello, world!</title>
-</head>
-
-<body class="d-flex flex-column vw-100 vh-100 align-items-center justify-content-center">
-    {% if messages %}
-        {% for i in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>{{i}}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="d-flex flex-column vw-100 vh-100 align-items-center justify-content-center">
+    <div class="d-flex flex-column justify-content-center shadow border p-3 w-50 align-items-center">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h1 class="p-3"> User Login</h1>
+            <div>
+                <label for="" class="form-label">Username:</label>
+                {{form.username}}
+            </div>
+            <div>
+                <label for="" class="form-label">Password:</label>
+                {{form.password}}
+            </div>
+            <div class="d-flex flex-column align-items-center justify-content-center p-2">
+                <input type="submit" class="btn btn-info">
+            </div>
+        </form>
+        <div class="align-content-center d-flex flex-column justify-content-center">
+            <a href="{% url 'register' %}">New user? Register here</a>
+        </div>
     </div>
-    {% endfor %}
-    {% endif %}
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit">
-    </form>
-    <a href="{% url 'register' %}">New user? Register here</a>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-
-    <!-- https://cdnjs.com/libraries/popper.js/2.5.4 -->
-    <!-- <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"
-    ></script> -->
-
-    <!-- More: https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
-</body>
-
-</html>
+</div>
+{% endblock %}

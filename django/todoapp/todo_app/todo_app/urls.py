@@ -23,5 +23,6 @@ urlpatterns = [
     path("register",views.UserRegisterView.as_view(),name="register"),
     path("",views.UserLoginView.as_view(),name="logview"),
     path("home",views.HomeView.as_view(),name="homeview"),
+    path('create',views.TodoCreateView.as_view(),name="createview")
 
 ]
