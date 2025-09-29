@@ -6,6 +6,9 @@
 
 <div class="container">
   <div class="d-flex flex-column w-100 vh-100 align-content-center justify-content-center text-center">
+    {% if msg %}
+    <h2>No Todos, <a href="{% url 'logview' %}">login</a></h2>
+    {% else %}
   <table class="table border ">
   <tr>
     <th>Title</th>
@@ -21,10 +24,15 @@
   <td>{{i.added_date}}</td>
   <td>{{i.due_date}}</td>
   <td>{{i.status}}</td>
+  <td>
+    <a href="{% url 'updatetodo' i.id %}" class="btn btn-warning">Update</a>
+    <a href="{% url 'deletetodo' i.id %}" class="btn btn-danger">Delete</a>
+  </td>
  </tr>
 
  {% endfor %}
 </table>
+{% endif %}
 </div>
 </div>
 

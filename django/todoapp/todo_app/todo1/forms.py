@@ -24,3 +24,15 @@ class TodoForm(forms.ModelForm):
             'content':forms.Textarea(attrs={'class':'form-control'}),
             'due_date':forms.DateInput(attrs={'class':'form-control','type':'date'}),
         }
+
+
+class TodoEditForm(forms.ModelForm):
+    class Meta:
+        model=Todo
+        fields=['title','content','due_date','status']
+        widgets={
+            'title':forms.TextInput(attrs={'class':'form-control'}),
+            'content':forms.Textarea(attrs={'class':'form-control'}),
+            'due_date':forms.DateInput(attrs={'class':'form-control','type':'date'}),
+            'status':forms.Select(attrs={'class':'form-select'}),
+        }

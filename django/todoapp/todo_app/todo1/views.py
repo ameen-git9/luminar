@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from todo1.forms import UserRegisterForm,UserLogin,TodoForm
+from todo1.forms import UserRegisterForm,UserLogin,TodoForm,TodoEditForm
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -45,8 +45,12 @@ class UserLoginView(View):
     
 class HomeView(View):
     def get(self,request):
-        todo=Todo.objects.filter(user=request.user)
-        return render(request,'home.html',{'todo':todo})
+        if request.user.is_authenticated:
+            todo=Todo.objects.filter(user=request.user,status="pending")
+            return render(request,'home.html',{'todo':todo})
+        else:
+            messages.warning(request,'You must login first')
+            return render(request,"home.html",{'msg':'no data'})
     
     
 
@@ -63,3 +67,35 @@ class TodoCreateView(View):
             messages.success(request,'TODO ADDED')
             return redirect('homeview')
 
+class DeleteTodo(View):
+    def get(self, request, **kwargs):
+        todo_id=kwargs.get("id")   
+        todo=Todo.objects.get(id=todo_id)
+        todo.delete()
+        messages.success(request,"TODO deleted successfully")
+        return redirect("homeview")
+    
+class UpdateTodo(View):
+    def get(self,request,**kwargs):
+        todo=Todo.objects.get(id=kwargs.get("id"))
+        form=TodoEditForm(instance=todo)
+        print("+++++++++++++++++++++++++++++")
+        return render(request,'todoupdate.html',{'form':form})
+    
+    def post(self,request,**kwargs):
+        todo=Todo.objects.get(id=kwargs.get("id"))
+        form=TodoEditForm(request.POST,instance=todo)
+        print(form)
+        if form.is_valid():
+            form.save()
+            messages.warning(request,"Todo updated succesfully")
+            return redirect("homeview") 
+        else:
+            messages.warning(request,"can't update")
+            return redirect('homeview') 
+
+class Logout(View):
+    def get(self,request):
+        logout(request)
+        messages.success(request,'logout successfully')
+        return redirect("logview")

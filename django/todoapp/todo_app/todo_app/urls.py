@@ -23,6 +23,9 @@ urlpatterns = [
     path("register",views.UserRegisterView.as_view(),name="register"),
     path("",views.UserLoginView.as_view(),name="logview"),
     path("home",views.HomeView.as_view(),name="homeview"),
-    path('create',views.TodoCreateView.as_view(),name="createview")
+    path('create',views.TodoCreateView.as_view(),name="createview"),
+    path('delete/<int:id>/',views.DeleteTodo.as_view(), name="deletetodo"),
+    path('update/<int:id>',views.UpdateTodo.as_view(), name="updatetodo"),
+    path('logout',views.Logout.as_view(), name="logout")
 
 ]
