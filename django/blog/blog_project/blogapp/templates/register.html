@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogHub - Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">BlogHub</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="blog.html">Blogs</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Registration Form -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-card">
+                <h2>Create Your Account</h2>
+                <div class="user-type-selector">
+                    <button type="button" class="user-type-btn active" data-type="reader">Reader</button>
+                    <button type="button" class="user-type-btn" data-type="writer">Writer</button>
+                </div>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regName">Full Name</label>
+                        <input type="text" id="regName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <input type="password" id="regPassword" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">Confirm Password</label>
+                        <input type="password" id="regConfirmPassword" name="confirmPassword" required>
+                    </div>
+                    <input type="hidden" id="userType" name="userType" value="reader">
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+                <div class="auth-links">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+                <div id="registerMessage" class="message"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BlogHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

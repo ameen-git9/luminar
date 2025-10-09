@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogHub - All Blogs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">BlogHub</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="blog.html" class="active">Blogs</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Blog Listing -->
+    <section class="blog-listing">
+        <div class="container">
+            <h1 class="page-title">All Blog Posts</h1>
+            <div class="filters">
+                <input type="text" id="searchInput" placeholder="Search blogs..." class="search-input">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="technology">Technology</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="travel">Travel</option>
+                    <option value="food">Food</option>
+                </select>
+            </div>
+            <div class="blog-grid" id="allBlogs">
+                <!-- All blogs will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BlogHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

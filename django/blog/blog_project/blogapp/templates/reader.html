@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogHub - Reader Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">BlogHub</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="blog.html">Blogs</a>
+                </div>
+                <div class="auth-buttons">
+                    <span class="user-welcome">Welcome, Reader!</span>
+                    <a href="#" class="btn btn-outline" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Reader Dashboard -->
+    <section class="dashboard">
+        <div class="container">
+            <h1 class="page-title">Reader Dashboard</h1>
+            
+            <!-- Saved Posts -->
+            <div class="saved-posts">
+                <h3>Your Saved Posts</h3>
+                <div class="blog-grid" id="savedPosts">
+                    <!-- Saved posts will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Recommended Posts -->
+            <div class="recommended-posts">
+                <h3>Recommended For You</h3>
+                <div class="blog-grid" id="recommendedPosts">
+                    <!-- Recommended posts will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BlogHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

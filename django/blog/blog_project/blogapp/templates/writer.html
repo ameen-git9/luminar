@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogHub - Writer Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">BlogHub</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="blog.html">Blogs</a>
+                </div>
+                <div class="auth-buttons">
+                    <span class="user-welcome">Welcome, Writer!</span>
+                    <a href="#" class="btn btn-outline" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Writer Dashboard -->
+    <section class="dashboard">
+        <div class="container">
+            <h1 class="page-title">Writer Dashboard</h1>
+            
+            <div class="dashboard-actions">
+                <button class="btn btn-primary" id="newPostBtn">Create New Post</button>
+            </div>
+
+            <!-- New Post Form (Initially Hidden) -->
+            <div class="post-form" id="postForm" style="display: none;">
+                <h3>Create New Blog Post</h3>
+                <form id="blogPostForm">
+                    <div class="form-group">
+                        <label for="postTitle">Title</label>
+                        <input type="text" id="postTitle" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postCategory">Category</label>
+                        <select id="postCategory" name="category" required>
+                            <option value="technology">Technology</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="travel">Travel</option>
+                            <option value="food">Food</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="postImage">Image URL</label>
+                        <input type="url" id="postImage" name="image" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label for="postDescription">Short Description</label>
+                        <textarea id="postDescription" name="description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent">Content</label>
+                        <textarea id="postContent" name="content" rows="10" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Publish Post</button>
+                        <button type="button" class="btn btn-outline" id="cancelPostBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- My Posts -->
+            <div class="my-posts">
+                <h3>My Published Posts</h3>
+                <div class="blog-grid" id="myPosts">
+                    <!-- Writer's posts will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BlogHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

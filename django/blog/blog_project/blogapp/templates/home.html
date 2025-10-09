@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogHub - Home</title>
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">BlogHub</a>
+                <div class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="blog.html">Blogs</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Share Your Stories With The World</h1>
+            <p>Join our community of writers and readers. Discover amazing content or create your own.</p>
+            <div class="hero-buttons">
+                <a href="register.html?type=reader" class="btn btn-primary">Join as Reader</a>
+                <a href="register.html?type=writer" class="btn btn-accent">Become a Writer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Blogs -->
+    <section class="featured-blogs">
+        <div class="container">
+            <h2 class="section-title">Featured Blogs</h2>
+            <div class="blog-grid" id="featuredBlogs">
+                <!-- Featured blogs will be loaded here -->
+            </div>
+            <div class="text-center">
+                <a href="blog.html" class="btn btn-outline">View All Blogs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BlogHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
