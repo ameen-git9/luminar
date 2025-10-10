@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from todo1.models import Todo
+from django.urls import reverse_lazy
 # Create your views here.
 class UserRegisterView(View):
     def get(self,request):
@@ -78,17 +79,51 @@ class HomeView(ListView):
 
 
 
-class TodoCreateView(View):
-    def get(self,request):
-        form=TodoForm()
-        return render(request,'todocreate.html',{'form':form})
+# class TodoCreateView(View):
+#     def get(self,request):
+#         form=TodoForm()
+#         return render(request,'todocreate.html',{'form':form})
     
-    def post(self,request):
-        form_instance=TodoForm(request.POST)
-        if form_instance.is_valid():
-            Todo.objects.create(**form_instance.cleaned_data,user=request.user)
-            messages.success(request,'TODO ADDED')
-            return redirect('homeview')
+#     def post(self,request):
+#         form_instance=TodoForm(request.POST)
+#         if form_instance.is_valid():
+#             Todo.objects.create(**form_instance.cleaned_data,user=request.user)
+#             messages.success(request,'TODO ADDED')
+#             return redirect('homeview')
+
+
+
+
+
+
+
+class TodoCreateView(CreateView):
+    template_name='todocreate.html'
+    form_class=TodoForm
+    model=Todo
+
+    # success_url=reverse_lazy('homeview')
+
+    def form_valid(self, form):
+        Todo.objects.create(**form.cleaned_data,user=self.request.user)
+        messages.success(self.request,'TODO CREATED')
+        return redirect('homeview')
+    
+    def form_invalid(self, form):
+        messages.warning(self.request,'INVALID INPUT')
+        return super().form_invalid(form)
+
+
+
+
+
+
+
+
+
+
+
+
 
 class DeleteTodo(View):
     def get(self, request, **kwargs):
