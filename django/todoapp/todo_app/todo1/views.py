@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import View
+from django.views.generic import TemplateView,ListView,CreateView
 from todo1.forms import UserRegisterForm,UserLogin,TodoForm,TodoEditForm
 from django.http import HttpResponse
 from django.contrib import messages
@@ -43,16 +44,23 @@ class UserLoginView(View):
     
 
     
-class HomeView(View):
-    def get(self,request):
-        if request.user.is_authenticated:
-            todo=Todo.objects.filter(user=request.user,status="pending")
-            return render(request,'home.html',{'todo':todo})
-        else:
-            messages.warning(request,'You must login first')
-            return render(request,"home.html",{'msg':'no data'})
+# class HomeView(View):
+#     def get(self,request):
+#         if request.user.is_authenticated:
+#             todo=Todo.objects.filter(user=request.user,status="pending")
+#             return render(request,'home.html',{'todo':todo})
+#         else:
+#             messages.warning(request,'You must login first')
+#             return render(request,"home.html",{'msg':'no data'})
     
     
+
+class HomeView(TemplateView):
+    template_name='home.html'
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['todo']=Todo.objects.filter(user=self.request.user,status="pending")
+        return context
 
 
 class TodoCreateView(View):
