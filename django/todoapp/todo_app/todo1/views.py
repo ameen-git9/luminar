@@ -7,7 +7,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from todo1.models import Todo
-
 # Create your views here.
 class UserRegisterView(View):
     def get(self,request):
@@ -55,13 +54,22 @@ class UserLoginView(View):
     
     
 
-class HomeView(TemplateView):
-    template_name='home.html'
-    def get_context_data(self, **kwargs):
-        context=super().get_context_data(**kwargs)
-        context['todo']=Todo.objects.filter(user=self.request.user,status="pending")
-        return context
+# class HomeView(TemplateView):
+#     template_name='home.html'
+#     def get_context_data(self, **kwargs):
+#         context=super().get_context_data(**kwargs)
+#         context['todo']=Todo.objects.filter(user=self.request.user,status="pending")
+#         return context
 
+
+
+class HomeView(ListView):
+    model=Todo
+    context_object_name="todo"
+    template_name="home.html"
+    
+    def get_queryset(self):
+        return Todo.objects.filter(user=self.request.user,status="pending")
 
 class TodoCreateView(View):
     def get(self,request):
