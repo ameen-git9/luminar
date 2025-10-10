@@ -63,6 +63,9 @@ class UserLoginView(View):
 
 
 
+
+
+
 class HomeView(ListView):
     model=Todo
     context_object_name="todo"
@@ -70,6 +73,10 @@ class HomeView(ListView):
     
     def get_queryset(self):
         return Todo.objects.filter(user=self.request.user,status="pending")
+    
+
+
+
 
 class TodoCreateView(View):
     def get(self,request):
