@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from django.views.generic import TemplateView,ListView,CreateView
+from django.views.generic import TemplateView,ListView,CreateView,UpdateView
 from todo1.forms import UserRegisterForm,UserLogin,TodoForm,TodoEditForm
 from django.http import HttpResponse
 from django.contrib import messages
@@ -9,6 +9,9 @@ from django.contrib.auth import authenticate,login,logout
 from todo1.models import Todo
 from django.urls import reverse_lazy
 # Create your views here.
+
+
+
 class UserRegisterView(View):
     def get(self,request):
         form=UserRegisterForm()
@@ -110,14 +113,8 @@ class TodoCreateView(CreateView):
         return redirect('homeview')
     
     def form_invalid(self, form):
-        messages.warning(self.request,'INVALID INPUT')
+        messages.warning(self.request,'INVALID')
         return super().form_invalid(form)
-
-
-
-
-
-
 
 
 
@@ -133,24 +130,43 @@ class DeleteTodo(View):
         messages.success(request,"TODO deleted successfully")
         return redirect("homeview")
     
-class UpdateTodo(View):
-    def get(self,request,**kwargs):
-        todo=Todo.objects.get(id=kwargs.get("id"))
-        form=TodoEditForm(instance=todo)
-        print("+++++++++++++++++++++++++++++")
-        return render(request,'todoupdate.html',{'form':form})
+
+
     
-    def post(self,request,**kwargs):
-        todo=Todo.objects.get(id=kwargs.get("id"))
-        form=TodoEditForm(request.POST,instance=todo)
-        print(form)
-        if form.is_valid():
-            form.save()
-            messages.warning(request,"Todo updated succesfully")
-            return redirect("homeview") 
-        else:
-            messages.warning(request,"can't update")
-            return redirect('homeview') 
+# class UpdateTodo(View):
+#     def get(self,request,**kwargs):
+#         todo=Todo.objects.get(id=kwargs.get("id"))
+#         form=TodoEditForm(instance=todo)
+#         print("+++++++++++++++++++++++++++++")
+#         return render(request,'todoupdate.html',{'form':form})
+    
+#     def post(self,request,**kwargs):
+#         todo=Todo.objects.get(id=kwargs.get("id"))
+#         form=TodoEditForm(request.POST,instance=todo)
+#         print(form)
+#         if form.is_valid():
+#             form.save()
+#             messages.warning(request,"Todo updated succesfully")
+#             return redirect("homeview") 
+#         else:
+#             messages.warning(request,"can't update")
+#             return redirect('homeview') 
+
+
+
+
+
+class UpdateTodo(UpdateView):
+    model=Todo
+    form_class=TodoEditForm
+    template_name='todoupdate.html'
+    pk_url_kwarg='id'
+    success_url=reverse_lazy('homeview')
+
+
+
+
+
 
 class Logout(View):
     def get(self,request):
