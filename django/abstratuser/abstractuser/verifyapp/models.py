@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from random import randint
+from django.db.models.signals import post_save
 
 # Create your models here.
 class User(AbstractUser):
@@ -20,3 +21,8 @@ class Profile(models.Model):
     profile_pic=models.ImageField(upload_to="image",default='image/default.jpg',null=True,blank=True)
     bio=models.TextField(null=True,blank=True)
 
+def create_profile(sender,instance,created,**kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+post_save.connect(create_profile,User)

@@ -59,8 +59,3 @@ class LoginView(View):
             return HttpResponse("login successfull")
         else:
             return HttpResponse("invalid username or password")
-
-
-
-
-    
