@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from django.views.generic import TemplateView,ListView,CreateView,UpdateView
+from django.views.generic import TemplateView,ListView,CreateView,UpdateView,DeleteView
 from todo1.forms import UserRegisterForm,UserLogin,TodoForm,TodoEditForm
 from django.http import HttpResponse
 from django.contrib import messages
@@ -122,14 +122,28 @@ class TodoCreateView(CreateView):
 
 
 
-class DeleteTodo(View):
-    def get(self, request, **kwargs):
-        todo_id=kwargs.get("id")   
-        todo=Todo.objects.get(id=todo_id)
-        todo.delete()
-        messages.success(request,"TODO deleted successfully")
-        return redirect("homeview")
+# class DeleteTodo(View):
+#     def get(self, request, **kwargs):
+#         todo_id=kwargs.get("id")   
+#         todo=Todo.objects.get(id=todo_id)
+#         todo.delete()
+#         messages.success(request,"TODO deleted successfully")
+#         return redirect("homeview")
     
+
+
+
+
+class DeleteTodo(DeleteView):
+    model=Todo
+    pk_url_kwarg='id'
+    success_url=reverse_lazy('homeview')
+    template_name="confirm.html"
+
+
+
+
+
 
 
     
