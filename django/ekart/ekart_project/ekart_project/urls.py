@@ -17,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ekart import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.HomeView.as_view(),name="homeview")
-]
+    path('',views.HomeView.as_view(),name="homeview"),
+    path('detail/<int:id>',views.DetailsView.as_view(),name="detailview"),
+    path('reg',views.UserRegisterView.as_view(),name="registerview"),
+    path('log',views.UserLoginView.as_view(),name="userloginview"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
