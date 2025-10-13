@@ -20,5 +20,5 @@ from ekart import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home',views.HomeView.as_view(),name="homeview")
+    path('',views.HomeView.as_view(),name="homeview")
 ]
