@@ -64,3 +64,5 @@ class UserLoginView(View):
         else:
             messages.warning(request,"invalid username or password")
             return redirect('userlogview')
+        
+
