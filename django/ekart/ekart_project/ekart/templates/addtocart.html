@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+<div class="d-flex flex-column vw-100 vh-100 align-items-center justify-content-center">
+    <div class="d-flex justify-content-center  p-3 w-50 align-items-center">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            {{form}}
+
+
+            <div class="d-flex flex-column align-items-center justify-content-center p-2">
+                <input type="submit" class="btn btn-info">
+            </div>
+           
+        </form>
+    </div>
+</div>
+{% endblock %}

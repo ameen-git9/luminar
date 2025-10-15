@@ -1,12 +1,13 @@
 from django.shortcuts import render,redirect
 from django.views import View
 from django.views.generic import TemplateView
-from ekart.models import Product
+from ekart.models import Product,Cart
 from django.contrib.auth.models import User
-from ekart.forms import UserRegisterForm,UserLogin
+from ekart.forms import UserRegisterForm,UserLogin,CartForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-
+from django.utils.decorators import method_decorator
+from ekart.authentication import login_requied
 
 # Create your views here.
 
@@ -66,3 +67,23 @@ class UserLoginView(View):
             return redirect('userlogview')
         
 
+
+@method_decorator(login_requied,name="dispatch")
+class AddCartView(View):
+    def get(self,request,*args,**kwargs):
+        form=CartForm()
+        return render(request,'addtocart.html',{'form':form})
+    
+    def post(self,request,*args,**kwargs):
+        product=Product.objects.get(id=kwargs.get('id'))
+        user=request.user
+        quantity=request.POST.get("quantity")
+        Cart.objects.create(user=user,product=product,quantity=quantity)
+        return redirect("homeview")
+    
+
+
+class LogoutView(View):
+    def get(self,request):
+        logout(request)
+        return redirect("userloginview")
