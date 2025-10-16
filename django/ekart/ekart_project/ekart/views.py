@@ -77,9 +77,18 @@ class AddCartView(View):
     def post(self,request,*args,**kwargs):
         product=Product.objects.get(id=kwargs.get('id'))
         user=request.user
-        quantity=request.POST.get("quantity")      
-        Cart.objects.create(user=user,product=product,quantity=quantity)
-        return redirect("homeview")
+        quantity=request.POST.get("quantity")
+        cart_item=Cart.objects.filter(user=user,product=product).exclude(status="order-placed")
+        if cart_item:
+            cart_item[0].quantity+=int(quantity)
+            cart_item[0].save()
+            messages.success(request,'item added to cart')
+            return redirect("homeview")
+        else:
+
+            Cart.objects.create(user=user,product=product,quantity=quantity)
+            messages.success(request,'item added to cart')
+            return redirect("homeview")
     
 
 
