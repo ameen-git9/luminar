@@ -77,7 +77,7 @@ class AddCartView(View):
     def post(self,request,*args,**kwargs):
         product=Product.objects.get(id=kwargs.get('id'))
         user=request.user
-        quantity=request.POST.get("quantity")
+        quantity=request.POST.get("quantity")      
         Cart.objects.create(user=user,product=product,quantity=quantity)
         return redirect("homeview")
     
