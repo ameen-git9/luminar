@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block main %}
+<section class="section" id="blog-list">
+    <div class="container">
+        <h2 class="text-center mb-4">Latest Blogs</h2>
+        {% for i in blog %}
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ i.blog_pic.url }}" class="card-img-top" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.title}}</h5>
+                        <p class="card-text">{{i.content}}</p>
+                        <a href="{% url 'viewblog' i.id%}" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

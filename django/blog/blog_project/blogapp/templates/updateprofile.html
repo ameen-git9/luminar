@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block main %}
+{% csrf_token %}
+<div class="d-flex flex-column justify-content-center align-items-center vh-100">
+    <h2 class="h2 font-monospace">UPDATE PROFILE</h2>
+    <div class="w-50">
+        <form action="" method="post">
+        {% csrf_token %}
+            <label for="" class="form-label">Username</label>
+            {{form.username}}           
+            <label for="" class="form-label">Email ID</label>
+            {{form.email}}
+        </div>
+        <input type="submit" class="btn btn-success mt-3">       
+    </form>
+</div>
+{% endblock %}

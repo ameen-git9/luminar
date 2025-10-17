@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blogapp import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +26,14 @@ urlpatterns = [
     path("register",views.UserRegView.as_view(),name="register"),
     path("login",views.UserLoginView.as_view(),name="login"),
     path("logout",views.LogoutView.as_view(),name="logout"),
+    path("write",views.WriterView.as_view(),name="writer"),
+    path("reader",views.ReaderView.as_view(),name="reader"),
+    path("create",views.CreateView.as_view(),name="create"),
+    path("delete/<int:id>",views.DeleteView.as_view(),name="delete"),
+    path("updateblog/<int:id>",views.CreateView.as_view(),name="updateblog"),
+    path("updateprofile/<int:id>",views.UpdateProfileView.as_view(),name="updateprofile"),
+    path("viewblog/<int:id>",views.ViewMoreView.as_view(),name="viewblog"),
 
-]
+
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

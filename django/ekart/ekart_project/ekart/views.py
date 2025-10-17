@@ -92,6 +92,17 @@ class AddCartView(View):
     
 
 
+
+
+class CartListView(View):
+    def get(self,request):
+        cart_list=Cart.objects.filter(user=request.user,status="in-cart")
+        return render (request,'cartlist.html',{'cart_list':cart_list})
+
+
+
+
+
 class LogoutView(View):
     def get(self,request):
         logout(request)

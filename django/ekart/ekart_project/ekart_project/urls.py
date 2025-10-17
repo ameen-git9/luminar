@@ -27,5 +27,6 @@ urlpatterns = [
     path('reg',views.UserRegisterView.as_view(),name="registerview"),
     path('log',views.UserLoginView.as_view(),name="userloginview"),
     path('add/cart/<int:id>',views.AddCartView.as_view(),name="addtocart"),
+    path('cart',views.CartListView.as_view(),name="cartlist"),
     path('out',views.LogoutView.as_view(),name="logout"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
