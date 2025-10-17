@@ -131,7 +131,7 @@ class UpdateProfileView(View):
             return redirect("writer")
         else:
             messages.error(request,"somthing went wrong")
-            return redirect("updateprofile" )
+            return redirect("updateprofile",user.id)
 
 
 

@@ -30,7 +30,7 @@ urlpatterns = [
     path("reader",views.ReaderView.as_view(),name="reader"),
     path("create",views.CreateView.as_view(),name="create"),
     path("delete/<int:id>",views.DeleteView.as_view(),name="delete"),
-    path("updateblog/<int:id>",views.CreateView.as_view(),name="updateblog"),
+    path("updateblog/<int:id>",views.UpdateBlogView.as_view(),name="updateblog"),
     path("updateprofile/<int:id>",views.UpdateProfileView.as_view(),name="updateprofile"),
     path("viewblog/<int:id>",views.ViewMoreView.as_view(),name="viewblog"),
 
