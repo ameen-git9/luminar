@@ -40,7 +40,7 @@ class Cart(models.Model):
 class Order(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     cart=models.ForeignKey(Cart,on_delete=models.CASCADE)
-    address=models.CharField()
+    address=models.CharField(max_length=500)
     date=models.DateField(auto_now_add=True)
     options=(
         ('order-placed','order-placed'),

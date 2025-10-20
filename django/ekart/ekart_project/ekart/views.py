@@ -1,13 +1,14 @@
 from django.shortcuts import render,redirect
 from django.views import View
 from django.views.generic import TemplateView
-from ekart.models import Product,Cart
+from ekart.models import Product,Cart,Order
 from django.contrib.auth.models import User
-from ekart.forms import UserRegisterForm,UserLogin,CartForm
+from ekart.forms import UserRegisterForm,UserLogin,CartForm,OrderProductForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from ekart.authentication import login_requied
+from django.core.mail import send_mail,settings
 
 # Create your views here.
 
@@ -98,6 +99,38 @@ class CartListView(View):
     def get(self,request):
         cart_list=Cart.objects.filter(user=request.user,status="in-cart")
         return render (request,'cartlist.html',{'cart_list':cart_list})
+
+
+
+
+
+class OrderProduct(View):
+    def get(self,request,**kwargs):
+        cart_instance=Cart.objects.get(id=kwargs.get("id"))
+        form=OrderProductForm()
+        return render(request,'orderproduct.html',{'form':form})
+        
+    def post(self, request, **kwargs):
+        user=request.user
+        email=user.email
+        cart_instance=Cart.objects.get(id=kwargs.get("id"))
+        address=request.POST.get("address")
+        Order.objects.create(address=address, user=user, cart=cart_instance)
+        cart_instance.status="order-placed"
+        cart_instance.save()
+        send_mail("Ekart-order confirmation ", f"Your order for product {cart_instance.product.product_name} is confirmed",
+                  settings.EMAIL_HOST_USER,[email])
+        messages.success(request,'Order placed successfully')
+        return redirect('homeview')
+
+
+
+
+
+class OrderListView(View):
+    def get(self,request):
+        orders=Order.objects.filter(user=request.user)
+        return render(request,"orderedlist.html",{"orders":orders})
 
 
 
