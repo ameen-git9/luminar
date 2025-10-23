@@ -21,6 +21,6 @@ class InstructorView(View):
             res.is_superuser=True
             res.is_staff=True
             res.password=make_password(form_instance.cleaned_data.get("password"))
-            form_instance.save()
+            res.save()
             return HttpResponse("data added")
 
