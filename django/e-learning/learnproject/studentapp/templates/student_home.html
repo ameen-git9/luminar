@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <title>Student Learning Platform</title>
 </head>
+
 <body class="bg-gray-50">
     <!-- Navbar -->
     <nav class="bg-purple-700 fixed w-full z-20 top-0 left-0">
@@ -15,7 +17,7 @@
             <a href="#" class="flex items-center">
                 <span class="self-center text-2xl font-semibold text-white">EduLearn</span>
             </a>
-            
+
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
                 <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
                     <li><a href="#" class="block py-2 pl-3 pr-4 text-white hover:text-purple-200">Home</a></li>
@@ -31,8 +33,11 @@
                 <div class="relative group">
                     <a href="#" class="text-white hover:text-purple-200">
                         <i class="fas fa-book-open text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
-                        <span class="hidden group-hover:block absolute top-full right-0 mt-2 bg-white text-purple-700 text-sm py-1 px-2 rounded shadow-lg whitespace-nowrap">My Courses</span>
+                        <span
+                            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                        <span
+                            class="hidden group-hover:block absolute top-full right-0 mt-2 bg-white text-purple-700 text-sm py-1 px-2 rounded shadow-lg whitespace-nowrap">My
+                            Courses</span>
                     </a>
                 </div>
 
@@ -40,8 +45,10 @@
                 <div class="relative group">
                     <a href="#" class="text-white hover:text-purple-200">
                         <i class="fas fa-heart text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">5</span>
-                        <span class="hidden group-hover:block absolute top-full right-0 mt-2 bg-white text-purple-700 text-sm py-1 px-2 rounded shadow-lg whitespace-nowrap">Wishlist</span>
+                        <span
+                            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">5</span>
+                        <span
+                            class="hidden group-hover:block absolute top-full right-0 mt-2 bg-white text-purple-700 text-sm py-1 px-2 rounded shadow-lg whitespace-nowrap">Wishlist</span>
                     </a>
                 </div>
 
@@ -49,12 +56,16 @@
                 <div class="relative group">
                     <a href="#" class="text-white hover:text-purple-200">
                         <i class="fas fa-shopping-cart text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
-                        <span class="hidden group-hover:block absolute top-full right-0 mt-2 bg-white text-purple-700 text-sm py-1 px-2 rounded shadow-lg whitespace-nowrap">Cart</span>
+                        <span
+                            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                        <span
+                            class="hidden group-hover:block absolute top-full right-0 mt-2 bg-white text-purple-700 text-sm py-1 px-2 rounded shadow-lg whitespace-nowrap">Cart</span>
                     </a>
                 </div>
 
-                <button class="text-white bg-purple-600 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Get Started</button>
+                <button
+                    class="text-white bg-purple-600 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Get
+                    Started</button>
             </div>
         </div>
     </nav>
@@ -64,8 +75,10 @@
         <div class="max-w-screen-xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8 items-center">
             <div class="text-white">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">Transform Your Future with Online Learning</h1>
-                <p class="text-lg mb-8">Access world-class education from anywhere. Start your learning journey today with our expert-led courses.</p>
-                <button class="bg-white text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-lg font-semibold transition duration-300">
+                <p class="text-lg mb-8">Access world-class education from anywhere. Start your learning journey today
+                    with our expert-led courses.</p>
+                <button
+                    class="bg-white text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-lg font-semibold transition duration-300">
                     Browse Courses
                 </button>
             </div>
@@ -80,53 +93,30 @@
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Popular Courses</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Course Card 1 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                <img src="/api/placeholder/400/200" alt="Course 1" class="w-full h-48 object-cover">
+            {% for course in courses %}
+            <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                <img src="{{course.image.url}}" alt="Course 1" class="w-full h-48 object-cover">
                 <div class="p-6">
-                    <div class="text-purple-600 text-sm font-semibold mb-2">PROGRAMMING</div>
-                    <h3 class="text-xl font-bold mb-2">Introduction to Python</h3>
-                    <p class="text-gray-600 mb-4">Learn Python programming from scratch with hands-on projects and exercises.</p>
+                    {% for cat in course.Category.all %}
+                    <span class="text-purple-600 text-sm font-semibold mb-2">{{cat.category_name}}</span>
+                    {% endfor %}
+                    <h3 class="text-xl font-bold mb-2">{{course.title}}</h3>
+                    <p class="text-gray-600 mb-4">{{course.description}}</p>
                     <div class="flex justify-between items-center">
-                        <span class="text-purple-700 font-bold">$49.99</span>
-                        <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition duration-300">
+                        <span class="text-purple-700 font-bold">₹{{course.price}}</span>
+                        <a href="{% url 'coursedetails' course.id %}"
+                            class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition duration-300">
                             Enroll Now
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <!-- Course Card 2 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                <img src="/api/placeholder/400/200" alt="Course 2" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="text-purple-600 text-sm font-semibold mb-2">DATA SCIENCE</div>
-                    <h3 class="text-xl font-bold mb-2">Data Analysis Fundamentals</h3>
-                    <p class="text-gray-600 mb-4">Master data analysis techniques using modern tools and methodologies.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-purple-700 font-bold">$59.99</span>
-                        <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition duration-300">
-                            Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course Card 3 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                <img src="/api/placeholder/400/200" alt="Course 3" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="text-purple-600 text-sm font-semibold mb-2">WEB DEVELOPMENT</div>
-                    <h3 class="text-xl font-bold mb-2">Full Stack Web Development</h3>
-                    <p class="text-gray-600 mb-4">Build modern web applications with the latest technologies and frameworks.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-purple-700 font-bold">$69.99</span>
-                        <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition duration-300">
-                            Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
+
+
 </body>
+
 </html>
