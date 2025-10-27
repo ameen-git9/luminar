@@ -26,4 +26,5 @@ urlpatterns = [
     path('instructor/reg',views.InstructorView.as_view(),name='instructorreg'),
     path('student/home',studView.StudentHome.as_view(),name='studenthome'),
     path('course/details/<int:id>',studView.CourseDetails.as_view(),name='coursedetails'),
+    path('student/register',studView.StudentReg.as_view(),name='studentregister'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

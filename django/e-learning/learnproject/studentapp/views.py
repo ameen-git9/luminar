@@ -1,8 +1,13 @@
 from django.shortcuts import render
 from django.views import View
 from instructorapp.models import Course,Category
+from instructorapp.forms import InstructorCreateForm
 # Create your views here.
 
+class StudentReg(View):
+    def get(self,request):
+        form=InstructorCreateForm()
+        return render (request,'student_register.html',{'form':form})
 
 class StudentHome(View):
     def get(self,request):
