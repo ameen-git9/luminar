@@ -1,9 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from instructorapp.models import Course,Category,User
+from instructorapp.models import Course,Category,User,Cart
 from instructorapp.forms import InstructorCreateForm
-# from django.contrib.auth.models import User
-
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 # Create your views here.
@@ -57,3 +55,17 @@ class CourseDetails(View):
     def get(self,request,**kwargs):
         course=Course.objects.get(id=kwargs.get("id"))
         return render(request,'course_details.html',{'course':course})
+    
+
+
+
+class AddToCart(View):
+    def get(self,request,**kwargs):
+        course_instance=Course.objects.get(id=kwargs.get("id"))
+        user_instance=request.user
+        res_instance,create=Cart.objects.get_or_create(course=course_instance,user=user_instance)
+        return redirect('studenthome')
+
+
+        
+

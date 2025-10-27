@@ -83,3 +83,11 @@ class Lesson(models.Model):
         max_order=Lesson.objects.filter(module_instance=self.module_instance).aggregate(max=Max('order')).get('max') or 0
         self.order=max_order + 1
         super().save(*args,**kwargs)
+
+
+class Cart(models.Model):
+    course=models.ForeignKey(Course,on_delete=models.CASCADE,related_name="cart")
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="user_cart")
+
+    def __str__(self):
+        return self.course.title
