@@ -4,6 +4,11 @@ from instructorapp.models import Course,Category,User,Cart
 from instructorapp.forms import InstructorCreateForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from decimal import Decimal
+
+
 # Create your views here.
 
 class StudentReg(View):
@@ -49,16 +54,25 @@ class StudentHome(View):
        
         courses=Course.objects.all()
         return render(request,"student_home.html",{'courses':courses})
+    
 
 
 class CourseDetails(View):
     def get(self,request,**kwargs):
         course=Course.objects.get(id=kwargs.get("id"))
         return render(request,'course_details.html',{'course':course})
+def login_required(fn):
+    def wrapper(request,*args,**kwargs):
+        if not request.user.is_authenticated:
+            return redirect('studentlogin')
+        else:
+            return fn(request,*args,**kwargs)
+    return wrapper
+
     
 
 
-
+@method_decorator(login_required,name="dispatch")
 class AddToCart(View):
     def get(self,request,**kwargs):
         course_instance=Course.objects.get(id=kwargs.get("id"))
@@ -69,3 +83,19 @@ class AddToCart(View):
 
         
 
+class StudentLogout(View):
+    def get(self,request):
+        logout(request)
+        return redirect("studentlogin")
+    
+     
+
+@method_decorator(login_required,name="dispatch")
+class CartSummary(View):
+    def get(self,request):
+        cart_list=Cart.objects.filter(user=request.user)
+        subtotal=sum(item.course.price for item in cart_list)
+        tax_rate=Decimal('0.10')
+        tax=subtotal * tax_rate
+        total=subtotal + tax
+        return render(request,'cart_summary.html',{'cart_list':cart_list,'subtotal':subtotal,'tax':tax,'total':total})

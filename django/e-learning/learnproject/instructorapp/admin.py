@@ -1,5 +1,5 @@
 from django.contrib import admin
-from instructorapp.models import User,Category,Course,Module,Lesson
+from instructorapp.models import User,Category,Course,Module,Lesson,Cart
 
 
 # Register your models here.
@@ -22,3 +22,5 @@ admin.site.register(Module,ModuleModel)
 class LessonModel(admin.ModelAdmin):
     exclude=['order']
 admin.site.register(Lesson,LessonModel)
+admin.site.register(Cart)
+
