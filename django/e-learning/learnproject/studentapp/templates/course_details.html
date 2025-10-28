@@ -52,17 +52,15 @@
     <!-- Course Content -->
     <div class="pt-20">
         <!-- Video Preview Section -->
-        {% video course.thumbnail as thumbnail %}
-       
+       <!-- Video Preview Section -->
+        
         <div class="bg-gray-900 w-full">
             <div class="max-w-screen-xl mx-auto px-4 py-8">
                 <div class="aspect-w-16 aspect-h-9">
-                    {% video thumbnail '1280x960' %}
+                  <iframe width="1280" height="400" src="{{course.thumbnail}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
-        {% endvideo %}
-
         <!-- Course Info and Modules -->
         <div class="max-w-screen-xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Course Information -->
