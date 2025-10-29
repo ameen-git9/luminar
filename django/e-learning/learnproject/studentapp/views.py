@@ -99,3 +99,10 @@ class CartSummary(View):
         tax=subtotal * tax_rate
         total=subtotal + tax
         return render(request,'cart_summary.html',{'cart_list':cart_list,'subtotal':subtotal,'tax':tax,'total':total})
+    
+
+
+class DeleteCart(View):
+    def get(self,request,**kwargs):
+        Cart.objects.get(id=kwargs.get('id')).delete()
+        return redirect('cartsummary')

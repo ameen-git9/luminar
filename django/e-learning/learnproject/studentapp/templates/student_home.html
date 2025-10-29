@@ -22,7 +22,12 @@
                 <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
                     <li><a href="#" class="block py-2 pl-3 pr-4 text-white hover:text-purple-200">Home</a></li>
                     <li><a href="#" class="block py-2 pl-3 pr-4 text-white hover:text-purple-200">Courses</a></li>
+                    {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}" class="block py-2 pl-3 pr-4 text-white hover:text-purple-200">Logout</a></li>
+                    {%else%}
+                    <li><a href="{% url 'studentlogin' %}" class="block py-2 pl-3 pr-4 text-white hover:text-purple-200">Login</a></li>
+
+                    {%endif%}
                     <li><a href="#" class="block py-2 pl-3 pr-4 text-white hover:text-purple-200">Contact</a></li>
                 </ul>
             </div>
