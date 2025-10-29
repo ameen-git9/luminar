@@ -10,6 +10,8 @@ from decimal import Decimal
 
 
 # Create your views here.
+RZP_KEY_ID="rzp_test_RZC0r3OUTZnaVf"
+RZP_KEY_SECRET="iXPshm3N14IB0S4sqr5H4gA3"
 
 class StudentReg(View):
     def get(self,request):

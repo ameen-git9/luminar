@@ -91,3 +91,17 @@ class Cart(models.Model):
 
     def __str__(self):
         return self.course.title
+    
+
+
+class Order(models.Model):
+    course_instances=models.ManyToManyField(Course,related_name="order")
+    student=models.ForeignKey(User,on_delete=models.CASCADE)
+    total=models.DecimalField(max_digits=10,decimal_places=2,default=0)
+    is_paid=models.BooleanField(default=False)
+    rzp_order_id=models.CharField(max_length=100,null=True)
+    added_date=models.DateField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.rzp_order_id
