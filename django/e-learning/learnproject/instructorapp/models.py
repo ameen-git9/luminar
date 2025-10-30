@@ -103,5 +103,5 @@ class Order(models.Model):
     added_date=models.DateField(auto_now_add=True)
 
 
-    def __str__(self):
-        return self.rzp_order_id
+    # def __str__(self):
+    #     return self.rzp_order_id

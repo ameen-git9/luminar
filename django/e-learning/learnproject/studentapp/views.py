@@ -121,7 +121,17 @@ class CheckoutView(View):
         if cart_list:
             for cart in cart_list:
                 order_instance.course_instances.add(cart.course)
-
+                client = razorpay.Client(auth=("rzp_test_RZC0r3OUTZnaVf", "iXPshm3N14IB0S4sqr5H4gA3"))
+                DATA = {
+                    "amount": 50000,
+                    "currency": "INR",
+                    "receipt": "receipt#1",
+                    "notes": {
+                        "key1": "value3",
+                        "key2": "value2"
+                    }
+                }
+                client.order.create(data=DATA)
         return render(request,'payment.html')
     
 
