@@ -1,12 +1,15 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from instructorapp.models import Course,Category,User,Cart
+from instructorapp.models import Course,Category,User,Cart,Order
 from instructorapp.forms import InstructorCreateForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from decimal import Decimal
+import razorpay
+from django.db.models import Sum
+
 
 
 # Create your views here.
@@ -108,3 +111,23 @@ class DeleteCart(View):
     def get(self,request,**kwargs):
         Cart.objects.get(id=kwargs.get('id')).delete()
         return redirect('cartsummary')
+    
+
+class CheckoutView(View):
+    def get(self,request):
+        cart_list=request.user.user_cart.all()
+        total_price=cart_list.aggregate(sum=Sum("course__price")).get("sum") or 0
+        order_instance=Order.objects.create(student=request.user,total=total_price)
+        if cart_list:
+            for cart in cart_list:
+                order_instance.course_instances.add(cart.course)
+
+        return render(request,'payment.html')
+    
+
+
+
+
+
+
+
