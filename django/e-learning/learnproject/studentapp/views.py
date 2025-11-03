@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from decimal import Decimal
 import razorpay
 from django.db.models import Sum
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -121,18 +122,41 @@ class CheckoutView(View):
         if cart_list:
             for cart in cart_list:
                 order_instance.course_instances.add(cart.course)
-                client = razorpay.Client(auth=("rzp_test_RZC0r3OUTZnaVf", "iXPshm3N14IB0S4sqr5H4gA3"))
-                DATA = {
-                    "amount": 50000,
-                    "currency": "INR",
-                    "receipt": "receipt#1",
-                    "notes": {
-                        "key1": "value3",
-                        "key2": "value2"
-                    }
+                cart.delete()
+            client = razorpay.Client(auth=(RZP_KEY_ID,RZP_KEY_SECRET))
+            DATA = {
+                "amount": float(total_price*100),
+                "currency": "INR",
+                "receipt": "receipt#1",
+                "notes": {
+                    "key1": "value3",
+                    "key2": "value2"
                 }
-                client.order.create(data=DATA)
-        return render(request,'payment.html')
+            }
+            payment=client.order.create(data=DATA)
+            order_instance.rzp_order_id=payment.get("id")
+            order_instance.save()
+
+        context={
+            "amount":float(total_price*100),
+            "key":RZP_KEY_ID,
+            "order_id":payment.get("id")
+        }
+        return render(request,'payment.html',context)
+    
+
+@method_decorator(csrf_exempt,name="dispatch")
+class PaymentConfirm(View):
+    def post(self,request):
+        client=razorpay.Client(auth=(RZP_KEY_ID,RZP_KEY_SECRET))
+        res=client.utility.verify_payment_signature(request.POST)
+        if res:
+            order_id=request.POST.get("razorpay_order_id")
+            order_instance=Order.objects.get(rzp_order_id=order_id)
+            print(order_instance)
+            order_instance.is_paid=True
+            order_instance.save()
+        return redirect('studenthome')
     
 
 
