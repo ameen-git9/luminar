@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from decimal import Decimal
 import razorpay
-from django.db.models import Sum
+from django.db.models import Sum,Count
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -57,9 +57,13 @@ class StudentLogin(View):
 
 class StudentHome(View):
     def get(self,request):
-       
         courses=Course.objects.all()
-        return render(request,"student_home.html",{'courses':courses})
+        if request.user.is_authenticated:  
+            purchased_course=Order.objects.filter(student=request.user).values_list("course_instances",flat=True)  #flat= is used to print list otherwise here print tuple[(1),(2)]
+            course_count=Order.objects.filter(student=request.user).aggregate(count=Count("course_instances")).get("count") or 0
+            return render(request,"student_home.html",{'courses':courses,'purchased_course':purchased_course,'course_count':course_count})
+        else:
+            return render(request,'student_home.html',{"courses":courses,'courses':0})
     
 
 
@@ -160,6 +164,12 @@ class PaymentConfirm(View):
     
 
 
+
+class Mycourses(View):
+    def get(self,request):
+        orders=Order.objects.filter(student=request.user)
+        return render(request,'mycourse.html',{'orders':orders})
+        
 
 
 
