@@ -1,0 +1,91 @@
+{% extends 'student_home.html' %}
+
+{% block content %}
+
+
+
+
+<!-- Course Content -->
+<div class="pt-20">
+    <!-- Video Preview Section -->
+    <!-- Video Preview Section -->
+
+    <div class="bg-gray-900 w-full">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="aspect-w-16 aspect-h-9">
+                <iframe width="1280" height="400" src="{{course.thumbnail}}" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Course Info and Modules -->
+    <div class="max-w-screen-xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Course Information -->
+        <div class="lg:col-span-2">
+            <h1 class="text-3xl font-bold mb-4">{{course.title}}</h1>
+            <div class="flex items-center mb-4 text-gray-600">
+                <span class="mr-4"><i class="fas fa-user mr-2"></i>{{course.owner}}</span>
+                <span class="mr-4"><i class="fas fa-clock mr-2"></i>20 hours</span>
+                <span><i class="fas fa-users mr-2"></i>1,234 students</span>
+            </div>
+            <p class="text-gray-700 mb-6">{{course.description}}</p>
+
+            <!-- Course Content Modules -->
+            <div class="space-y-4">
+                <h2 class="text-2xl font-bold mb-4">Course Content</h2>
+                {% for module in course.module.all %}
+                <!-- Module 1 -->
+                <div class="border rounded-lg overflow-hidden">
+                    <button class="w-full px-6 py-4 bg-purple-50 hover:bg-purple-100 flex items-center justify-between"
+                        onclick="toggleModule('module{{forloop.counter}}')">
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-down mr-4 text-purple-600"></i>
+                            <span class="font-semibold">{{module.title}}</span>
+                        </div>
+                        <span class="text-gray-600">{{module.lesson.all.count}} lessons • 45 min</span>
+                    </button>
+                    <div id="module{{forloop.counter}}" class="hidden">
+                        <div class="p-4 space-y-2">
+                            {% for lesson in module.lesson.all %}
+                            <div class="flex items-center p-2 hover:bg-gray-50 rounded">
+                                <i class="fas fa-play-circle text-purple-600 mr-4"></i>
+                                <span>{{forloop.counter}}:
+                                    <a href="{% url 'lesson' course.id %}?module={{module.id}}&lesson={{lesson.id}}">
+                                        {{lesson.title}}</a>
+                                </span>
+                                <span class="ml-auto text-gray-600">15 min</span>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    function toggleModule(moduleId) {
+        const module = document.getElementById(moduleId);
+        const isHidden = module.classList.contains('hidden');
+        const allModules = document.querySelectorAll('[id^="module"]');
+
+        // Close all modules
+        allModules.forEach(mod => mod.classList.add('hidden'));
+
+        // Open clicked module if it was closed
+        if (isHidden) {
+            module.classList.remove('hidden');
+        }
+    }
+</script>
+{% endblock %}

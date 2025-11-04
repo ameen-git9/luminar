@@ -70,7 +70,14 @@ class StudentHome(View):
 class CourseDetails(View):
     def get(self,request,**kwargs):
         course=Course.objects.get(id=kwargs.get("id"))
-        return render(request,'course_details.html',{'course':course})
+        if request.user.is_authenticated:  
+            purchased_course=Order.objects.filter(student=request.user).values_list("course_instances",flat=True)  #flat= is used to print list otherwise here print tuple[(1),(2)]
+            course_count=Order.objects.filter(student=request.user).aggregate(count=Count("course_instances")).get("count") or 0
+            return render(request,'course_details.html',{'course':course,'purchased_course':purchased_course,'course_count':course_count})
+        else:
+            return render(request,'course_details.html',{'course':course,'purchased_course':purchased_course,'course_count':course_count})
+
+
 def login_required(fn):
     def wrapper(request,*args,**kwargs):
         if not request.user.is_authenticated:
@@ -172,6 +179,9 @@ class Mycourses(View):
         
 
 
-
+class Lesson(View):
+    def get(self,request,**kwargs):
+        course_instance=Course.objects.get(id=kwargs.get("id"))
+        return render(request,'lesson.html',{'course':course_instance})
 
 
