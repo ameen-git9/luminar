@@ -16,5 +16,5 @@ class Todo(models.Model):
     status=models.CharField(max_length=100,default="pending",choices=options)
 
 
-# py manage.py makemigartes
+# py manage.py makemigrations
 # py manage.py migrate
