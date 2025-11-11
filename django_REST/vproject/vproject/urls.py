@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",views.Home.as_view()),
     path("student",views.StudentView.as_view()),
+    path("students/<int:id>",views.StudentDetailView.as_view()),
 
 ]
