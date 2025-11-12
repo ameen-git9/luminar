@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from vapp.models import Student
-from vapp.serializer import StudentSerializer
+from vapp.serializer import StudentSerializer,StudentModelSerializer
 from rest_framework import status
 
 # Create your views here.
@@ -56,3 +56,41 @@ class StudentDetailView(APIView):
         stud.save()
         return Response({'msg':'data updated'})
     
+
+class StudentModelView(APIView):
+    def get(self,request):
+        students=Student.objects.all()
+        serializer=StudentModelSerializer(students,many=True)
+        return Response(data=serializer.data)
+    
+    def post(self,request):
+        serializer=StudentModelSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(data=serializer.data)
+        else:
+            return Response(data=serializer.errors)
+        
+
+class StudentModelDetailView(APIView):
+    def get(self,request,**kwargs):
+        stud=Student.objects.get(id=kwargs.get('id'))
+        serializer=StudentModelSerializer(stud)
+        return Response(data=serializer.data)
+    
+    def delete(self,request,**kwargs):
+        stud=Student.objects.get(id=kwargs.get('id')).delete()
+        return Response({'msg':'data deleted'})
+    
+    def put(self,request,**kwargs):
+        stud=Student.objects.get(id=kwargs.get('id'))
+        serializer=StudentModelSerializer(data=request.data)
+        if serializer.is_valid():
+            name=serializer.validated_data.get('name')
+            place=serializer.validated_data.get('place')
+            age=serializer.validated_data.get('age')
+            stud.name=name
+            stud.place=place
+            stud.age=age
+            stud.save()
+            return Response(data=serializer.data)
