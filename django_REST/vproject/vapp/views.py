@@ -84,13 +84,8 @@ class StudentModelDetailView(APIView):
     
     def put(self,request,**kwargs):
         stud=Student.objects.get(id=kwargs.get('id'))
-        serializer=StudentModelSerializer(data=request.data)
+        serializer=StudentModelSerializer(stud,data=request.data)
         if serializer.is_valid():
-            name=serializer.validated_data.get('name')
-            place=serializer.validated_data.get('place')
-            age=serializer.validated_data.get('age')
-            stud.name=name
-            stud.place=place
-            stud.age=age
-            stud.save()
+            
+            serializer.save()
             return Response(data=serializer.data)
