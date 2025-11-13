@@ -9,3 +9,10 @@ from todo_app.serializer import UserSerializer
 class UserView(ModelViewSet):
     queryset=User.objects.all()
     serializer_class=UserSerializer
+
+    def create(self, request,**kwargs):
+        serailizer=UserSerializer(data=request.data)
+        if serailizer.is_valid():
+            User.objects.create_user(**serailizer.validated_data)
+            return Response(data=serailizer.data)
+

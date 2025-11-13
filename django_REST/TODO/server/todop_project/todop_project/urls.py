@@ -24,4 +24,4 @@ router.register('user',views.UserView,basename='user_view')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+]+router.urls
