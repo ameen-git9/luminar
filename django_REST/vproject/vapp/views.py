@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from vapp.models import Student
 from vapp.serializer import StudentSerializer,StudentModelSerializer
 from rest_framework import status
+from rest_framework.viewsets import ModelViewSet,ViewSet
 
 # Create your views here.
 
@@ -89,3 +90,53 @@ class StudentModelDetailView(APIView):
             
             serializer.save()
             return Response(data=serializer.data)
+        
+
+class StudentViewsetView(ViewSet):
+    def list(self,request,**kwargs):
+        students=Student.objects.all()
+        serializer=StudentModelSerializer(students,many=True)
+        return Response(data=serializer.data)
+    
+    def create(self,request,**kwargs):
+        serializer=StudentModelSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(data=serializer.data)
+        else:
+            return Response(data=serializer.errors)
+        
+    
+    def retrieve(self,request,**kwargs):
+        try:
+
+            stud=Student.objects.get(id=kwargs.get('pk'))
+            serializer=StudentModelSerializer(stud)
+            return Response(data=serializer.data)
+        except:
+            return Response({'msg':'matching query does not exist'},status=status.HTTP_404_NOT_FOUND)
+        
+
+    def update(self,request,**kwargs):
+        stud=Student.objects.get(id=kwargs.get('pk'))
+        serializer=StudentModelSerializer(stud,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(data=serializer.data)
+        else:
+            return Response(data=serializer.errors)
+        
+
+
+    def destroy(self,request,**kwargs):
+        stud=Student.objects.get(id=kwargs.get('pk')).delete()
+        return Response({'msg':'data deleted'})
+
+
+        
+
+class StudentModelViewset(ModelViewSet):
+    queryset=Student.objects.all()
+    serializer_class=StudentModelSerializer
+
+        

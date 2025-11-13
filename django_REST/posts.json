@@ -1,8 +1,0 @@
-[
-    {"postID":1,"userID":1,"title":"t1","content":"c1","liked_by":[1,2]},
-    {"postID":2,"userID":1,"title":"t2","content":"c2","liked_by":[1]},
-    {"postID":3,"userID":2,"title":"t1","content":"c1","liked_by":[1,2,3,4]},
-    {"postID":4,"userID":2,"title":"t2","content":"c2","liked_by":[1,2,3]},
-    {"postID":5,"userID":3,"title":"t1","content":"c1","liked_by":[2,3]},
-    {"postID":6,"userID":4,"title":"t1","content":"c1","liked_by":[2,3,4]}
-]

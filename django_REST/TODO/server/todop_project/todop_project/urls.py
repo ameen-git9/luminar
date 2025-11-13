@@ -1,5 +1,5 @@
 """
-URL configuration for vproject project.
+URL configuration for todop_project project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -16,19 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from vapp import views
-from rest_framework.routers import DefaultRouter
-
-router=DefaultRouter()
-router.register('viewset',views.StudentViewsetView,basename="student_view")
-router.register('modelviewset',views.StudentModelViewset,basename="studentmodel_view")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",views.Home.as_view()),
-    path("student",views.StudentView.as_view()),
-    path("students/<int:id>",views.StudentDetailView.as_view()),
-    path("stud",views.StudentModelView.as_view()),
-    path("stud/<int:id>",views.StudentModelDetailView.as_view())
-
-]+router.urls
+]
