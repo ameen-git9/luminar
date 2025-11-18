@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class TodoSerializer(serializers.ModelSerializer):
     id=serializers.IntegerField(read_only=True)
-    user=serializers.CharField(read_only=True)
+    user=UserSerializer(read_only=True)
     class Meta:
         model=Todo
         fields='__all__'

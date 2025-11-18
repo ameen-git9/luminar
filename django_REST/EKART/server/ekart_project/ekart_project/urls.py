@@ -1,5 +1,5 @@
 """
-URL configuration for todop_project project.
+URL configuration for ekart_project project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -16,16 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rest_framework.routers import DefaultRouter
-from todo_app import views
-from rest_framework.authtoken import views as tokenview
-
-router=DefaultRouter()
-router.register('user',views.UserView,basename='user_view')
-
-router.register('todo',views.TodoView,basename='todo_view')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('login', tokenview.obtain_auth_token)
-]+router.urls
+]

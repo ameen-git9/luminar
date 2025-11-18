@@ -24,7 +24,8 @@ class UserView(ModelViewSet):
 class TodoView(ModelViewSet):
     queryset=Todo.objects.all()
     serializer_class=TodoSerializer
-    authentication_classes=[authentication.BasicAuthentication]
+    # authentication_classes=[authentication.BasicAuthentication]
+    authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[permissions.IsAuthenticated]
 
 
