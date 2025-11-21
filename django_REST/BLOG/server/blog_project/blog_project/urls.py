@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blog_app import views
+from rest_framework.authtoken import views as authview
 from rest_framework.routers import DefaultRouter
 
 routers=DefaultRouter()
@@ -24,4 +25,5 @@ routers.register('user',views.UserView,basename="user_view")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('token',authview.obtain_auth_token)
 ]+routers.urls
