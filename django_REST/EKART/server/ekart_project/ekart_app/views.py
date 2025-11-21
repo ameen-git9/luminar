@@ -36,7 +36,26 @@ class ProductView(ModelViewSet):
                 except:
                     return Response({'msg':'already exist'})
         except:
-            return Response({'msg':'matching query doesnot exist'})    
+            return Response({'msg':'matching query doesnot exist'})
+
+    @action(methods=['GET'],detail=True)
+    def review_list(self, request, *args, **kwargs):
+        product=Product.objects.get(id=kwargs.get('pk'))
+        review=Review.objects.filter(product_instance=product)
+        serializer=Reviewserializer(review,many=True)
+        return Response(data=serializer.data)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

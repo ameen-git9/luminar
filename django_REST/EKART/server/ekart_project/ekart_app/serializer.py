@@ -6,7 +6,7 @@ class ProductSerializers(serializers.ModelSerializer):
     total_rating=serializers.FloatField(read_only=True)
     class Meta:
         model=Product
-        fields='_all_'
+        fields='__all__'
 
 class Userserializer(serializers.ModelSerializer):
     id=serializers.IntegerField(read_only=True)
