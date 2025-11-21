@@ -16,8 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rest_framework.routers import 
+from rest_framework.routers import DefaultRouter
+from ekart_app import views
+from rest_framework.authtoken import views as authview
+
+
+
+router=DefaultRouter()
+router.register('product',views.ProductView,basename="product_view")
+router.register('user',views.UserView,basename="user_view")
+router.register('cart',views.CartView,basename="cart_view")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('token',authview.obtain_auth_token),
+
+]+router.urls
