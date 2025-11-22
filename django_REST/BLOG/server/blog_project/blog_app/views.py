@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from blog_app.serializers import UserSerializer,ProfileSerializer
-from blog_app.models import ProfileModel
+from blog_app.serializers import UserSerializer,ProfileSerializer,PostSerializer
+from blog_app.models import ProfileModel,PostModel
 from rest_framework import permissions, authentication
 from rest_framework.decorators import action
 
@@ -37,3 +37,33 @@ class ProfileView(ModelViewSet):
         user_followwing=request.user
         profile_to_follow.followers.add(user_followwing)
         return Response({'msg':'followed'})
+    
+    @action(methods=['GET'],detail=True)
+    def list_followers(self, request, *args, **kwargs):
+        profile=ProfileModel.objects.get(id=kwargs.get('pk'))
+        followers_list=profile.followers.all()
+        serializer=UserSerializer(followers_list,many=True)
+        return Response(data=serializer.data)
+    
+class PostView(ModelViewSet):
+    queryset=PostModel.objects.all()
+    serializer_class=PostSerializer
+    authentication_classes=[authentication.TokenAuthentication]
+    permission_classes=[permissions.IsAuthenticated]
+
+    def perform_create(self,serializer):
+        serializer.save(user=self.request.user)
+        return super().perform_create(serializer)
+    
+    @action(methods=['POST'],detail=True)
+    def Add_likes(self,request,*args,**kwargs):
+        post_to_like = PostModel.objects.get(id=kwargs.get('pk'))
+        user = request.user
+        post_to_like.likes.add(user)
+        return Response ({'msg':'liked'})
+    
+
+    
+
+        
+        
