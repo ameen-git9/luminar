@@ -13,6 +13,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     user=UserSerializer(read_only=True)
     followers=serializers.CharField(read_only=True)
     followers_count=serializers.IntegerField(read_only=True)
+    followers_list=UserSerializer(read_only=True,many=True)
     class Meta:
         model=ProfileModel
         fields="__all__"
@@ -22,9 +23,14 @@ class PostSerializer(serializers.ModelSerializer):
     id=serializers.IntegerField(read_only=True)
     user=UserSerializer(read_only=True)
     likes=serializers.CharField(read_only=True)
+    likes_count=serializers.IntegerField(read_only=True)
+    likes_list=UserSerializer(read_only=True,many=True)
     class Meta:
         model=PostModel
         fields="__all__"
+
+
+        
 
   
     

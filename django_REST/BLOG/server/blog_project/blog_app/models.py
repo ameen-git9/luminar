@@ -17,6 +17,9 @@ class ProfileModel(models.Model):
 
     def followers_count(self):
         return self.followers.all().count()
+    
+    def followers_list(self):
+        return self.followers.all()
 
 class PostModel(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -27,4 +30,10 @@ class PostModel(models.Model):
     
     def __str__(self):
         return self.title
+    
+    def likes_count(self):
+        return self.likes.all().count()
+    
+    def likes_list(self):
+        return self.likes.all()
 
