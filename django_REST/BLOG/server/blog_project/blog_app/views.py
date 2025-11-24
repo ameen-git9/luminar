@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from blog_app.serializers import UserSerializer,ProfileSerializer,PostSerializer
-from blog_app.models import ProfileModel,PostModel
+from blog_app.serializers import UserSerializer,ProfileSerializer,PostSerializer,CommentSerializer
+from blog_app.models import ProfileModel,PostModel,CommentModel
 from rest_framework import permissions, authentication
 from rest_framework.decorators import action
 
@@ -62,6 +62,19 @@ class PostView(ModelViewSet):
         post_to_like.likes.add(user)
         return Response ({'msg':'liked'})
     
+
+    @action(methods=['POST'],detail=True)
+    def add_comment(self, request, *args, **kwargs):
+        post= PostModel.objects.get(id=kwargs.get('pk'))
+        user= request.user
+        serializer=CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            CommentModel.objects.create(**serializer.validated_data,user=user,post=post)
+            return Response({'msg':'comment added'})
+
+
+
+
 
     
 

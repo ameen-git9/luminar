@@ -36,4 +36,17 @@ class PostModel(models.Model):
     
     def likes_list(self):
         return self.likes.all()
+    
+   
+    
+
+class CommentModel(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    post=models.ForeignKey(PostModel,on_delete=models.CASCADE)
+    comment=models.TextField()
+
+    def __str__(self):
+        return self.comment
+    
+   
 

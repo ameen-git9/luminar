@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from blog_app.models import ProfileModel,PostModel
+from blog_app.models import ProfileModel,PostModel,CommentModel
 
 class UserSerializer(serializers.ModelSerializer):
     id=serializers.IntegerField(read_only=True)
@@ -28,6 +28,17 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model=PostModel
         fields="__all__"
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    id=serializers.IntegerField(read_only=True)
+    user=UserSerializer(read_only=True)
+    post=PostSerializer(read_only=True)
+    comment=serializers.CharField(read_only=True)
+    class Meta:
+        model=CommentModel
+        fields="__all__"
+
 
 
         
