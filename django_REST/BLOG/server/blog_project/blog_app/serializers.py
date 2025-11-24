@@ -12,6 +12,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     id=serializers.IntegerField(read_only=True)
     user=UserSerializer(read_only=True)
     followers=serializers.CharField(read_only=True)
+    followers_count=serializers.IntegerField(read_only=True)
     class Meta:
         model=ProfileModel
         fields="__all__"

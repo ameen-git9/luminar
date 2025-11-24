@@ -10,9 +10,13 @@ class ProfileModel(models.Model):
     profile_pic=models.ImageField(upload_to="profile-pic")
     followers=models.ManyToManyField(User,related_name="folllowers")
 
+
     def __str__(self):
         return self.user.username
 
+
+    def followers_count(self):
+        return self.followers.all().count()
 
 class PostModel(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
