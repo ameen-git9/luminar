@@ -25,6 +25,8 @@ class PostSerializer(serializers.ModelSerializer):
     likes=serializers.CharField(read_only=True)
     likes_count=serializers.IntegerField(read_only=True)
     likes_list=UserSerializer(read_only=True,many=True)
+    comment_count=serializers.IntegerField(read_only=True)
+
     class Meta:
         model=PostModel
         fields="__all__"
@@ -34,7 +36,7 @@ class CommentSerializer(serializers.ModelSerializer):
     id=serializers.IntegerField(read_only=True)
     user=UserSerializer(read_only=True)
     post=PostSerializer(read_only=True)
-    comment=serializers.CharField(read_only=True)
+   
     class Meta:
         model=CommentModel
         fields="__all__"

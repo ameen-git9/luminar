@@ -71,6 +71,17 @@ class PostView(ModelViewSet):
         if serializer.is_valid():
             CommentModel.objects.create(**serializer.validated_data,user=user,post=post)
             return Response({'msg':'comment added'})
+        
+
+
+    @action(methods=['GET'],detail=True)
+    def comments_list(self,request,*args, **kwargs):
+        post=PostModel.objects.get(id=kwargs.get('pk'))
+        comments=CommentModel.objects.filter(post=post)
+        serializer=CommentSerializer(comments,many=True)
+        return Response(data=serializer.data)
+
+
 
 
 

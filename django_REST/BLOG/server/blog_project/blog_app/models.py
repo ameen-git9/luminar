@@ -37,6 +37,9 @@ class PostModel(models.Model):
     def likes_list(self):
         return self.likes.all()
     
+    def comment_count(self):
+        return CommentModel.objects.filter(post=self).count()
+    
    
     
 
