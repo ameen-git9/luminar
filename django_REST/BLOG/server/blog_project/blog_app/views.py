@@ -6,6 +6,7 @@ from blog_app.serializers import UserSerializer,ProfileSerializer,PostSerializer
 from blog_app.models import ProfileModel,PostModel,CommentModel
 from rest_framework import permissions, authentication
 from rest_framework.decorators import action
+from rest_framework_simplejwt import authentication as simplejwt_auth
 
 
 # Create your views here.
@@ -48,7 +49,8 @@ class ProfileView(ModelViewSet):
 class PostView(ModelViewSet):
     queryset=PostModel.objects.all()
     serializer_class=PostSerializer
-    authentication_classes=[authentication.TokenAuthentication]
+    # authentication_classes=[authentication.TokenAuthentication]
+    authentication_classes=[simplejwt_auth.JWTAuthentication]
     permission_classes=[permissions.IsAuthenticated]
 
     def perform_create(self,serializer):
@@ -80,6 +82,14 @@ class PostView(ModelViewSet):
         comments=CommentModel.objects.filter(post=post)
         serializer=CommentSerializer(comments,many=True)
         return Response(data=serializer.data)
+
+
+
+class CommentView(ModelViewSet):
+    queryset=CommentModel.objects.all()
+    serializer_class=CommentSerializer
+    authentication_classes=[authentication.TokenAuthentication]
+    permission_classes=[permissions.IsAuthenticated]
 
 
 

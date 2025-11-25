@@ -19,13 +19,19 @@ from django.urls import path
 from blog_app import views
 from rest_framework.authtoken import views as authview
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
+
+
 
 routers=DefaultRouter()
 routers.register('user',views.UserView,basename="user_view")
 routers.register('profile',views.ProfileView,basename="profile_view")
 routers.register('post',views.PostView,basename="post_view")
+routers.register('comment',views.CommentView,basename="comment_view")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('token',authview.obtain_auth_token)
+    path('token',authview.obtain_auth_token),
+    path('access', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('refresh', TokenRefreshView.as_view(), name='token_refresh'),
 ]+routers.urls
