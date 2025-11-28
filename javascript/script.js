@@ -120,4 +120,121 @@
 
 
 
+// assignment operators - =,+=
 
+// relational operators -m <,>,=<, !=, == (checks value), === (checks data type and data)
+
+// a = 10
+// b = "10"
+
+// a==b - true
+// a===b - false
+
+
+// logical operators - &&, ||, !
+
+// console.log(!(true)); - false
+
+// bitwise oprator - &, | 
+// console.log(1&2); -0
+
+
+
+
+// Ternery operator ?:
+
+// num =12
+// if(num<18){
+//     console.log("not eligible");
+    
+// }
+// else{
+//     console.log("eligible");
+    
+// }
+
+// so simple 
+
+// console.log(num<18?"not eligible":"eligible");  - after ? true then : else
+
+// a = parseInt(prompt("enter the 1st number"))
+// b = parseInt(prompt("enter the 1st number"))         //it will only see in html, error will shows the console
+// c = parseInt(prompt("enter the 1st number"))
+
+// if (a>b && a>c){
+//     // console.log(`${a} is large`);
+//     alert(`${a} is large`);
+    
+// }else if(b>c){
+//     // console.log(`${b} is big`);
+//     alert(`${b} is big`);
+    
+// }else{
+//     // console.log(c," is big");
+//     alert(c," is big");
+    
+// }
+
+// parseInt() - consider only int value - igonore the point values
+// parseFloat() - consider float
+
+
+// switch case 
+
+// day =15
+// switch(day){
+//     case 1:
+//         console.log("day One");
+//         break;
+//     case 2:
+//         console.log("day One");
+//         break;
+//     default:
+//         console.log("else");   
+//         }
+
+
+
+
+// looping statements - for, do while, while 
+
+                                                        // for 
+// for (let i=1;i<11;i++){
+//     console.log(i);
+    
+// }
+
+// out 
+// 1,2,3,4,5,6...,10    
+
+
+
+// for/in - index
+// for/of - data
+
+
+// s= "welcome"
+// console.log(s.length);   //7
+
+// for(let i in s){
+//     console.log(i);   //in - index no. will print
+// }
+
+
+// s= "welcome"
+// for(let i of s){
+//     console.log(i);     //of - ch will print
+// }
+
+
+
+// largest 
+
+// arr =[12,555,14,79,55]
+// largest = 0
+// for (let i of arr){
+//     if (largest < i){
+//         largest=i
+//     }
+// }
+// console.log(largest);
