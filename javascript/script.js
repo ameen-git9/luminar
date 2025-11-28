@@ -282,11 +282,11 @@
 // -----------------------------------------------
 
         // functions
-        
-function findSum(a,b){
-    console.log(a+b);
+
+// function findSum(a,b){
+//     console.log(a+b);
     
-}
-findSum(10,20)
-findSum(10,45)
-findSum(10,90)
+// }
+// findSum(10,20)
+// findSum(10,45)
+// findSum(10,90)
