@@ -238,3 +238,55 @@
 //     }
 // }
 // console.log(largest);
+
+
+// let i=1
+// while(i<11){
+//     console.log(i);
+//     i++
+    
+// }
+
+         //reverse & check palindrome
+
+
+// num = 123
+// temp=num
+// rev = 0
+// while(num>0){
+//     rem=num%10
+//     rev=rev*10+rem
+//     num=parseInt(num/10)
+// }
+// console.log(rev);
+// console.log(num);
+// if(temp==rev){
+//     console.log('${temp}is palindrome')
+// }
+// else{
+//     console.log('${temp} is not palindrome');
+    
+// }
+ 
+
+       // do-while
+
+// let i=1
+// do{
+//     console.log(i);
+//     i++
+    
+// }
+// while(i<11)
+
+// -----------------------------------------------
+
+        // functions
+        
+function findSum(a,b){
+    console.log(a+b);
+    
+}
+findSum(10,20)
+findSum(10,45)
+findSum(10,90)
