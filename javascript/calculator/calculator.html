@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
+    <!-- https://cdnjs.com/libraries/font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+
+    <title>Hello, world!</title>
+</head>
+
+<body> 
+    <div class="d-flex justify-content-center align-items-center w-100 mt-5 ">
+        <div class="w-25 p-5 border shadow text-center  " style="background-color: rgb(59, 53, 53); border-radius: 12px;">
+            <input type="text" id="result" class="form-control" ><br><br>
+            
+            <button class="btn btn-info" value="1" onclick="getValue(event)">1</button>
+            <button class="btn btn-info" value="2" onclick="getValue(event)">2</button>
+            <button class="btn btn-info" value="3" onclick="getValue(event)">3</button>
+            <button class="btn btn-info" value="+" onclick="getValue(event)">+</button>
+            
+            
+            <br><br>
+            <button class="btn btn-info" value="4" onclick="getValue(event)">4</button>
+            <button class="btn btn-info" value="5" onclick="getValue(event)">5</button>
+            <button class="btn btn-info" value="6" onclick="getValue(event)">6</button>
+            <button class="btn btn-info" value="-" onclick="getValue(event)">-</button><br><br>
+            <button class="btn btn-info" value="7" onclick="getValue(event)">7</button>
+            <button class="btn btn-info" value="8" onclick="getValue(event)">8</button>
+            <button class="btn btn-info" value="9" onclick="getValue(event)">9</button>
+            <button class="btn btn-info" value="*" onclick="getValue(event)">x</button>
+            <br><br> 
+            <button class="btn btn-info"  onclick="findResult()">=</button>
+            <button class="btn btn-info" value="0" onclick="getValue(event)">0</button>
+            <button class="btn btn-info" value="/" onclick="getValue(event)">/</button>
+            <button class="btn " style="background-color: palevioletred;"  onclick="dataclear()">C</button>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+    <!-- https://cdnjs.com/libraries/popper.js/2.5.4 -->
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"
+    ></script> -->
+
+    <!-- More: https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
+     <script src="calculator.js"></script>
+</body>
+
+</html>
