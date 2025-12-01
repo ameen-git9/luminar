@@ -7,7 +7,7 @@
 // console.log(typeof s2);
 
 
-s="  HELLO  WORLD "
+// s="  HELLO  WORLD "
 // console.log(s.toUpperCase());
 // console.log(s.toLowerCase());
 
@@ -35,16 +35,28 @@ s="  HELLO  WORLD "
 
 // Date
 
-let today=new Date
-console.log(today);
-y=today.getFullYear()
-m=today.getMonth()
-d=today.getDay()
-d1=d.toString().padStart(2,0)
+// let today=new Date
+// console.log(today);
+// y=today.getFullYear()
+// m=today.getMonth()
+// d=today.getDay()
+// d1=d.toString().padStart(2,0)
 
-fulldate=`${y}-${m}-${d1}`
-console.log(fulldate);
+// fulldate=`${y}-${m}-${d1}`
+// console.log(fulldate);
 
+
+
+// s="hello world"
+// console.log(s.replace("l","z"));   //out:- hezlo world
+// console.log(s.replaceAll(/l/g,"r"));   //out:- herro worrd
+// console.log(s.concat(" ","hates"));    //out:- hello world hates
+
+
+s="hello"
+pattern=/l/i
+x=s.match(pattern)
+log
 
 
 
