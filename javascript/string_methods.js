@@ -134,20 +134,25 @@
 
 //            promise -  fulfilled, pending, rejected
 
-let promise=new Promise(function(resolve,reject){     // anonymous function
-    let data=true
-    if(data){
-        resolve("fulfilled")
-    }
-    else{
-        reject("rejected")
-    }
-})
+// let promise=new Promise(function(resolve,reject){     // anonymous function
+//     let data=true
+//     if(data){
+//         resolve("fulfilled")
+//     }
+//     else{
+//         reject("rejected")
+//     }
+// })
 
-promise.then((result)=>{   // arrow function
-    console.log(result);
+// promise.then((result)=>{   // arrow function
+//     console.log(result);
     
-}).catch((error)=>{
-    console.log(error);  
-})
+// }).catch((error)=>{
+//     console.log(error);  
+// })
+
+
+
+
+// Map, filter, reduce, foreach(), find().
 
