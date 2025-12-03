@@ -296,23 +296,62 @@
 
 //destructoring
 
-arr1=[1,2,3]
-arr2=[4,5,6]
-arr3=[...arr1,...arr2]
-console.log(arr3);
+// arr1=[1,2,3]
+// arr2=[4,5,6]
+// arr3=[...arr1,...arr2]
+// console.log(arr3);
 
-obj1={name:'ameen',place:'calicut'}
-obj2={email:'ameen@gmail.com'}
-obj3={...obj1,...obj2}
-console.log(obj3);
+// obj1={name:'ameen',place:'calicut'}
+// obj2={email:'ameen@gmail.com'}
+// obj3={...obj1,...obj2}
+// console.log(obj3);
 
-// hooks
+// // hooks
+// //destructoring
 
-arr1=[10,20,30,40,50]
-let [a,b,c]=arr1
-console.log(a);
-console.log(b);
-console.log(c);
+// arr1=[10,20,30,40,50]
+// let [a,b,c]=arr1
+// console.log(a);
+// console.log(b);
+// console.log(c);
+
+// user = {name:'ameen',place:'',email:'ameen@gmail.com'}
+// let {name,place,email}=user
+// if (!name || !place || !email){
+//         console.log("invalid input");
+        
+// }
+// else{
+//         console.log("valid");
+        
+// }
 
 
+
+
+                                 // regular expression
+
+// g - global search -> loop String
+// i - case insensitive
+// m - line by line
+
+
+// match, matchall, test
+
+
+s="javascript java"
+// pattern=/java/  //g, m, i
+// console.log(pattern.test(s));
+
+// pattern=/Java/ig //g, m, i
+// console.log(s.match(pattern));
+
+pattern=/A/ig
+res=s.matchAll(pattern)
+for (let i of res){
+        console.log(i);
+        
+}
+console.log(s.replace("a","*"));        //j*vascript java
+console.log(s.replaceAll(/a/g,"*"));      //j*v*script j*v*
 
