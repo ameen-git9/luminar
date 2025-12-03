@@ -339,19 +339,19 @@
 // match, matchall, test
 
 
-s="javascript java"
+// s="javascript java"
 // pattern=/java/  //g, m, i
 // console.log(pattern.test(s));
 
 // pattern=/Java/ig //g, m, i
 // console.log(s.match(pattern));
 
-pattern=/A/ig
-res=s.matchAll(pattern)
-for (let i of res){
-        console.log(i);
+// pattern=/A/ig
+// res=s.matchAll(pattern)
+// for (let i of res){
+//         console.log(i);
         
-}
-console.log(s.replace("a","*"));        //j*vascript java
-console.log(s.replaceAll(/a/g,"*"));      //j*v*script j*v*
+// }
+// console.log(s.replace("a","*"));        //j*vascript java
+// console.log(s.replaceAll(/a/g,"*"));      //j*v*script j*v*
 
