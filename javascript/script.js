@@ -290,3 +290,29 @@
 // findSum(10,20)
 // findSum(10,45)
 // findSum(10,90)
+
+
+          // spread operator
+
+//destructoring
+
+arr1=[1,2,3]
+arr2=[4,5,6]
+arr3=[...arr1,...arr2]
+console.log(arr3);
+
+obj1={name:'ameen',place:'calicut'}
+obj2={email:'ameen@gmail.com'}
+obj3={...obj1,...obj2}
+console.log(obj3);
+
+// hooks
+
+arr1=[10,20,30,40,50]
+let [a,b,c]=arr1
+console.log(a);
+console.log(b);
+console.log(c);
+
+
+
