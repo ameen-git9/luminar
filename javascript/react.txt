@@ -1,2 +1,10 @@
 react - javascript library - .js, .jsx file extensions
 angular - framework - .ts(typescript), contain html, css files. 
+
+
+react-
+javascript library
+virtual DOM (document object model)
+component based approach  (RegExp.jsx -js&html .css)
+single page application
+one-way databinding
