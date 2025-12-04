@@ -333,7 +333,7 @@
 
 // g - global search -> loop String
 // i - case insensitive
-// m - line by line
+// m - line by line, multiple searching
 
 
 // match, matchall, test
@@ -355,3 +355,35 @@
 // console.log(s.replace("a","*"));        //j*vascript java
 // console.log(s.replaceAll(/a/g,"*"));      //j*v*script j*v*
 
+
+s= `ava
+script
+javaj
+script`
+pattern=/^j/m  //its take first j from multiple lines. ^ - starting. $ - is endhing 
+console.log(s.match(pattern));
+
+// output
+// [
+//   'j',
+//   index: 11,
+//   input: 'ava\nscript\njava\nscript',
+//   groups: undefined
+// ]
+
+
+\d - 0 - 9,
+\D - non DOMStringList,
+\w - word characters a-z 0-9
+\W - non word characters,
+\s - space,
+\S - non space,
+\bx - ^x,
+x\b - 
+in* - zero or more i, in, innn,
+in+ - one or more in, inn, innn,
+in? - atmost one - i, in
+i|n - -i or n 
+. - single characters
+a.c - check three characters begins with a and end with c, likes:-abc, axc, afc...
+a..c - abbc, afec... 

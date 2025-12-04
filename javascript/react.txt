@@ -1,0 +1,2 @@
+react - javascript library - .js, .jsx file extensions
+angular - framework - .ts(typescript), contain html, css files. 
