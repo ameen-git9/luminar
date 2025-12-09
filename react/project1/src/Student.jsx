@@ -13,8 +13,8 @@ function Student() {
 
 
   return (
-    <div>
-        <table className='table table-bordered'>
+    <div className='d-flex text-center justify-content-center mt-3 align-content-center '>
+        <table className='table table-bordered table-striped w-75'>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -24,13 +24,16 @@ function Student() {
             </thead>
             <tbody>
                 {
-                    student.map((stud)=>(
+                    student.length > 0?
+                        student.map((stud)=>(
                         <tr>
                             <td>{stud.id}</td>
                             <td>{stud.name}</td>
                             <td>{stud.place}</td>
                         </tr>
                     ))
+
+                    : <h2>No students</h2>
                 }
             </tbody>
         </table>
