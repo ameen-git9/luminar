@@ -3,6 +3,8 @@ import Register from'./register'
 import Login from './Login'
 import Home from './Home'
 import {Routes,Route} from 'react-router-dom'
+import Student from './Student'
+
 
 
 function App(){
@@ -13,7 +15,8 @@ function App(){
       <Routes>
         <Route path= 'reg' element={<Register/>}/>
         <Route path= 'log' element={<Login/>}/>
-        <Route path= 'home' element={<Home/>}/>
+        <Route path= '' element={<Home/>}/>
+        <Route path= 'stud' element={<Student/>}/>
       </Routes>
     </>
   );
