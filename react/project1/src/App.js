@@ -5,6 +5,7 @@ import Home from './Home'
 import {Routes,Route} from 'react-router-dom'
 import Student from './Student'
 import Counter from './Counter'
+import Products from './Products'
 
 
 
@@ -19,6 +20,7 @@ function App(){
         <Route path= '' element={<Home/>}/>
         <Route path= 'stud' element={<Student/>}/>
         <Route path= 'count' element={<Counter/>}/>
+        <Route path= 'product' element={<Products/>}/>
       </Routes>
     </>
   );
