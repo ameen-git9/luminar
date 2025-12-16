@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="add" element={<AddStudent/>} />
-        <Route path="edit" element={<EditStudent/>} />
+        <Route path="edit/:id" element={<EditStudent/>} />
       </Routes >
     <ToastContainer/>
     </>

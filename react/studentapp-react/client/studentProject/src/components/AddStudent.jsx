@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { addStudent } from '../api/fetchApi';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -11,6 +12,9 @@ function AddStudent() {
     const [student, setStudents] = useState({
         name: "", place: "", email: "", phone: ""
     })
+
+    const navigate=useNavigate()
+
     console.log(student);
 
 
@@ -24,6 +28,7 @@ function AddStudent() {
             addStudent(student).then((res)=>{
                 console.log(res.data);
                 toast("Student added")
+                navigate('/')
                 
             })
         }

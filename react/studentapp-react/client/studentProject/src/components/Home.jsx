@@ -46,7 +46,7 @@ function Home() {
                                             <td>{stud.email}</td>
                                             <td>{stud.phone}</td>
                                             <td>
-                                                <Link to={'edit'}>
+                                                <Link to={`edit/${stud.id}`}>
                                                     <i className="fa-solid fa-pen-to-square" style={{ color: "#74C0FC" }}></i>
                                                 </Link>
 
