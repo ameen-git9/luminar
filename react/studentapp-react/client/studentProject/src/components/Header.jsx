@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <div>
-        <Navbar className="bg-body-tertiary fixed-top">
+        <Navbar className="bg-body-tertiary ">
         <Container>
           <Navbar.Brand href="#home">
            <i class="fa-solid fa-people-group"></i>

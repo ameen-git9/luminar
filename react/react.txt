@@ -31,6 +31,15 @@ Happy hacking!
 
 npx-create-react-app projectname
 
-rfce
+rfce -> for create function
 
-react bootstrap - navbar... 
+create react project
+npm vite@latest...
+
+
+
+
+install
+npm install react-bootstrap -> react bootstrap - navbar...
+npm install react-router-dom 
+npm i axios  -> fetch api from backend

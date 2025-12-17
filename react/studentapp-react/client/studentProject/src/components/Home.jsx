@@ -45,12 +45,12 @@ function Home() {
                                             <td>{stud.place}</td>
                                             <td>{stud.email}</td>
                                             <td>{stud.phone}</td>
-                                            <td>
+                                            <td className=''>
                                                 <Link to={`edit/${stud.id}`}>
-                                                    <i className="fa-solid fa-pen-to-square" style={{ color: "#74C0FC" }}></i>
+                                            <i   class="fa-regular fa-pen-to-square fa-beat-fade" style={{color:" #63E6BE"}}></i>
                                                 </Link>
-
-                                                <i onClick={()=>{deleteData(stud.id)}}  className="fa-solid fa-trash" style={{ color: "#ff0000" }}></i>
+                                            
+                                            <i onClick={()=>{deleteData(stud.id)}} class="fa-solid fa-trash-arrow-up fa-shake" style={{color:" #f92b06"}}></i>
                                             </td>
                                         </tr>
                                     ))
