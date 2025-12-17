@@ -34,12 +34,15 @@ npx-create-react-app projectname
 rfce -> for create function
 
 create react project
-npm vite@latest...
+npm create vite@latest
 
 
 
 
 install
+
+npm i react-router-dom react bootstrap react-toastify axios
+
 npm install react-bootstrap -> react bootstrap - navbar...
 npm install react-router-dom 
 npm i axios  -> fetch api from backend
