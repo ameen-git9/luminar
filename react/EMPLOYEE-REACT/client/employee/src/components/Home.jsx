@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import { listEmployee } from '../api/fetchApi'
+import { deleteEmployee, listEmployee } from '../api/fetchApi'
 
 
 function Home() {
@@ -13,6 +13,12 @@ function Home() {
             setEmployee(res.data)
         })
     }, [])
+
+    const deleteData=(id)=>{
+        deleteEmployee(id).then((res)=>{
+            toast('Employee data deleted')
+        })
+    }
 
 
 
@@ -38,16 +44,10 @@ function Home() {
                                         <td>{empl.designation}</td>
                                         <td>{empl.email}</td>
                                         <td>
-                                            <Link to={`/edit/${empl._id}`}>
-                                                <i
-                                                    className="fa-regular fa-pen-to-square fa-beat-fade me-3"
-                                                    style={{ color: "#63E6BE" }}
-                                                ></i>
+                                            <Link to={`/edit/${empl.id}`}>
+                                                <i className="fa-regular fa-pen-to-square fa-beat-fade me-3"style={{ color: "#63E6BE" }}></i>
                                             </Link>
-                                            <i
-                                                className="fa-solid fa-trash-arrow-up fa-shake"
-                                                style={{ color: "#f92b06" }}
-                                            ></i>
+                                            <i onClick={()=>{deleteData(empl.id)}} className="fa-solid fa-trash-arrow-up fa-shake"style={{ color: "#f92b06" }}></i>
                                         </td>
                                     </tr>
                                 ))
