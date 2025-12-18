@@ -14,7 +14,6 @@ function AddEmployee() {
 
     const navigate=useNavigate()
 
-    console.log(employee);
 
 
     const formSubmit=()=>{
@@ -25,7 +24,6 @@ function AddEmployee() {
         }
         else{
             addEmployee(employee).then((res)=>{
-                console.log(res.data);
                 toast("Employee added")
                 navigate('/')
                 

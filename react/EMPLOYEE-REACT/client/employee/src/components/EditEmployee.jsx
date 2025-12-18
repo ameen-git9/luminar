@@ -31,7 +31,7 @@ function EditEmployee() {
     const formSubmit = () => {
         updateEmployee(id, employee).then((res) => {
             console.log(res.data);
-            toast("Employee data updated")
+            toast("Employee  updated")
             navigate('/')
 
         })

@@ -16,7 +16,7 @@ function Home() {
 
     const deleteData=(id)=>{
         deleteEmployee(id).then((res)=>{
-            toast('Employee data deleted')
+            toast('Employee  deleted')
         })
     }
 

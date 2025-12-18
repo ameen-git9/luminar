@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Home from './components/Home'
 import AddEmployee from './components/AddEmployee';
 import EditEmployee from './components/EditEmployee';
+import './bootstrap.min.css'
 
 
 function App() {
