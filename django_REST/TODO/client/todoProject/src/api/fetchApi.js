@@ -1,14 +1,21 @@
-import axios from 'axios'
+import commonApi from "./commonApi";
 
+console.log("FETCH API FILE LOADED");
 
-const commonApi=(Url,Method,Data)=>{
-    const config={
-        url:Url,
-        method:Method,
-        data:Data,
-        headers:{'content-type':'application/json'}
-    }
-    return axios(config)
-    
+export const register=(data)=>{
+    return commonApi("http://127.0.0.1:8000/user/","POST",data)
 }
-export default commonApi
+
+export const login=(data)=>{
+    return commonApi("http://127.0.0.1:8000/login","POST",data,"")
+}
+
+
+export const listTodo = (header) => {
+    return commonApi("http://127.0.0.1:8000/todo/","GET","",header)
+}
+
+
+export const addTodo=(data,header)=>{
+    return commonApi("http://127.0.0.1:8000/todo/","POST",data,header)
+}

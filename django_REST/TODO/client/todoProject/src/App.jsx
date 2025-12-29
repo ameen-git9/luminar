@@ -5,6 +5,9 @@ import './App.css'
 import {Routes,Route} from 'react-router-dom'
 import Register from './components/Register'
 import Login from './components/Login'
+import { ToastContainer } from 'react-toastify'
+import Home from './components/Home'
+import Add from './components/Add'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,8 +16,11 @@ function App() {
     <>
      <Routes>
         <Route path='reg' element={<Register/>}/>
-        <Route path='login' element={<Login/>}/>
+        <Route path='/' element={<Login/>}/>
+        <Route path='home' element={<Home/>}/>
+        <Route path='add' element={<Add/>}/>
       </Routes>
+      <ToastContainer/>
     </>
   )
 }

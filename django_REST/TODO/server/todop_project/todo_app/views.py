@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 from todo_app.serializer import UserSerializer,TodoSerializer
 from todo_app.models import Todo
-from rest_framework import authentication,permissions
+from rest_framework import authentication,permissions,status
 
 
 # Create your views here.
@@ -20,6 +20,7 @@ class UserView(ModelViewSet):
         if serailizer.is_valid():
             User.objects.create_user(**serailizer.validated_data)
             return Response(data=serailizer.data)
+        return Response(serailizer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 class TodoView(ModelViewSet):
     queryset=Todo.objects.all()
