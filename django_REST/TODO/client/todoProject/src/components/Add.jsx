@@ -22,7 +22,7 @@ function Add() {
 
     
     const header = {
-        "Authorization": `Token ${sessionStorage.getItem("login")}`,
+        "Authorization": `token ${sessionStorage.getItem("token")}`,
         "Content-Type": "application/json"
     }
 
@@ -40,6 +40,10 @@ function Add() {
                 handleClose()
             })
         }
+
+        
+
+
     }
 
     

@@ -8,6 +8,8 @@ import Login from './components/Login'
 import { ToastContainer } from 'react-toastify'
 import Home from './components/Home'
 import Add from './components/Add'
+import Edit from './components/Edit'
+
 
 function App() {
   const [count, setCount] = useState(0)

@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Add from './Add'
 import { listTodo } from '../api/fetchApi'
+import { deleteTodo } from '../api/fetchApi'
+import { toast } from 'react-toastify'
+import Edit from './Edit'
 
 function Home() {
 
@@ -22,7 +25,15 @@ function Home() {
         })
     }, [])
 
-
+    const dataDelete=(id)=>{
+        deleteTodo(id,header).then((res)=>{
+            console.log(res.data);
+            toast("Todo deleted")
+            
+        })
+    }
+            
+        
 
 
 
@@ -42,6 +53,7 @@ function Home() {
                             <th>ADDED DATE</th>
                             <th>DUE DATE</th>
                             <th>STATUS</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +66,12 @@ function Home() {
                                         <td>{todo.description}</td>
                                         <td>{todo.added_date}</td>
                                         <td>{todo.due_date}</td>
+                                        <td>{todo.status}</td>
+                                        <td>
+                                            <button className='btn btn-danger' onClick={()=>{dataDelete(todo.id)}}>DELETE</button>
+                                            <Edit id={todo.id}/>
+                                        </td>
+
 
                                     </tr>
                                 ))
