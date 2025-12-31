@@ -95,12 +95,12 @@ function Edit({ id }) {
 
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Cancel
                     </Button>
 
 
                     <Button variant="primary" onClick={formSubmit}>
-                        Save Changes
+                        Update
                     </Button>
                 </Modal.Footer>
             </Modal>

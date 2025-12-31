@@ -20,7 +20,7 @@ function App() {
         <Route path='reg' element={<Register/>}/>
         <Route path='/' element={<Login/>}/>
         <Route path='home' element={<Home/>}/>
-        <Route path='add' element={<Add/>}/>
+        <Route path='add/:id' element={<Add/>}/>
       </Routes>
       <ToastContainer/>
     </>
