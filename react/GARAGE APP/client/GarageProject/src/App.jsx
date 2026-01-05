@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import {ToastContainer} from 'react-toastify'
-import {Routes,Route} from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './components/Home'
@@ -13,15 +13,14 @@ function App() {
 
   return (
     <>
-    <Header/>
+      <Header />
       <Routes>
-        
-        <Route path='/' element={<Home/>}/>
-        <Route path='customer' element={<Customer/>}/>
-        <Route path='service' element={<Service/>}/>
+        <Route path='/' element={<Home />} />
+        <Route path='customer' element={<Customer />} />
+        <Route path='service' element={<Service />} />
       </Routes>
-      <Footer/>
-      <ToastContainer/>
+      <Footer />
+      <ToastContainer />
     </>
   )
 }
