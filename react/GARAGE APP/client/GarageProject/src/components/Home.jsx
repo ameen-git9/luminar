@@ -16,22 +16,21 @@ function Home() {
 
             const cur_date = new Date
             const year = cur_date.getFullYear()
-            const m = cur_date.getFullYear() + 1
-            const month = m.toString().padstart(2, 0)
+            const m = cur_date.getMonth() + 1
+            const month = m.toString().padStart(2, 0)
             const d = cur_date.getDate()
             const day = d.toString().padStart(2, 0)
             const today = `${year}-${month}-${day}`
             console.log(today);
             const allServices = services?.filter((serv) => (serv.exp_date == today))
             setService(allServices);
-
-
-
-
+            console.log(allServices);
+            
 
         })
     }, [])
 
+console.log(service);
 
 
 
@@ -57,7 +56,7 @@ function Home() {
                                         <td>{serv.customer.vehicle_no}</td>
                                         <td>{serv.customer.phone}</td>
                                         <td>
-                                            <Link to={'/service'} className='btn btn-warning'>view services</Link>
+                                            <Link to={`/service/${serv.customer.id}`} className='btn btn-warning'>view services</Link>
                                         </td>
                                     </tr>
                                 ))

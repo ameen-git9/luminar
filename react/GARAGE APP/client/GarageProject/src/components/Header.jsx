@@ -14,7 +14,7 @@ function Header() {
                     <Nav className="me-auto">
                         <Nav.Link><Link className='nav-link' to={'/'} style={{ fontFamily: "-apple-system" }}>Home</Link></Nav.Link>
                         <Nav.Link><Link className='nav-link' to={'Customer'} style={{ fontFamily: "-apple-system" }}>Customer</Link></Nav.Link>
-                        <Nav.Link><Link className='nav-link' to={'Service'} style={{ fontFamily: "-apple-system" }}>services</Link></Nav.Link>
+                        <Nav.Link><Link className='nav-link' to={'Service/:id'} style={{ fontFamily: "-apple-system" }}>services</Link></Nav.Link>
 
                     </Nav>
                 </Container>

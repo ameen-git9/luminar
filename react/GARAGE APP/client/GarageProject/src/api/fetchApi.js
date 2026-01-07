@@ -4,3 +4,15 @@ import commonApi from "./commonApi";
 export const getallServices = () => {
     return commonApi("http://127.0.0.1:8000/service/", "GET", "")
 }
+
+export const getServices=(id)=>{
+    return commonApi(`http://127.0.0.1:8000/customer/${id}/list_service/`,"GET","","")
+}
+
+export const getAllCustomer=()=>{
+    return commonApi("http://127.0.0.1:8000/customer/", "GET", "","")
+}
+
+export const getCustomer=(id)=>{
+    return commonApi(`http://127.0.0.1:8000/customer/${id}/`,"GET","","")
+}
