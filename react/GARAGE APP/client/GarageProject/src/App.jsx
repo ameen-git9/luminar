@@ -7,6 +7,8 @@ import Footer from './components/Footer'
 import Home from './components/Home'
 import Customer from './components/Customer'
 import Service from './components/Service'
+import Addservice from './components/Addservice'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +20,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='customer' element={<Customer />} />
         <Route path='service/:id' element={<Service />} />
+        <Route path='addserivice' element={<Addservice />} />
       </Routes>
       <Footer />
       <ToastContainer />

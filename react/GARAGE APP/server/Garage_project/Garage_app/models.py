@@ -23,6 +23,7 @@ class Service(models.Model):
     description=models.TextField()
     amount=models.PositiveIntegerField()
     exp_date=models.DateField()
+    status=models.CharField(max_length=100,default='pending')
 
     def __str__(self):
         return self.title

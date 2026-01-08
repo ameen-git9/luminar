@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { getAllCustomer } from '../api/fetchApi';
 import { Link } from 'react-router-dom';
+import Addcustomer from './Addcustomer';
 
 function Customer() {
   const [customer, setCustomer] = useState([]);
@@ -22,9 +23,7 @@ function Customer() {
       <Row>
       
         <Col sm={3}>
-          <Link to="/add-customer" className="btn btn-success mb-3">
-            Add Customer
-          </Link>
+          <Addcustomer/>
         </Col>
 
        
@@ -33,16 +32,16 @@ function Customer() {
             {customer.length > 0 ? (
               customer.map((cust) => (
                 <Col sm={9} md={4} className="mb-4" >
-                  <Card>
+                  <Card className="h-100 shadow-sm">
                     <Card.Img
                       variant="top"
-                      src={cust.image} className='mb-4'/>
-                    <Card.Body>
+                      src={cust.image} className="card-img-fixed" style={{height:"300px"}}/>
+                    <Card.Body className="d-flex flex-column">
                       <Card.Title>{cust.vehicle_no}</Card.Title>
                       <Card.Text>
                         <h5>Contact:</h5> {cust.phone}
                       </Card.Text>
-                      <Link to={`/service/${cust.id}`} className="btn btn-primary w-100">
+                      <Link to={`/service/${cust.id}`} className="btn btn-primary  mt-auto">
                         Services
                       </Link>
                     </Card.Body>
