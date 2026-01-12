@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -6,6 +5,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { addCustomer } from '../api/fetchApi';
 import { toast } from 'react-toastify';
+import { customerAddContext } from '../ContextApi';
+import { useContext } from 'react';
+
 
 function Addcustomer() {
 
@@ -16,6 +18,9 @@ function Addcustomer() {
   const [customer, setCustomer] = useState({
     customer_name: "", vehicle_no: "", phone: "", image: ""
   })
+
+
+  const {setCustomerContextData}=useContext(customerAddContext)
 
 
   const handleClose = () => setShow(false);
@@ -41,6 +46,7 @@ function Addcustomer() {
       addCustomer(formData,header).then((res)=>{
         console.log(res.data);
         toast("Customer Added")
+        setCustomerContextData(res)
         handleClose()     
       })
       }

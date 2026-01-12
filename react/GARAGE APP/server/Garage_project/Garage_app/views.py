@@ -11,8 +11,9 @@ class CustomerViewset(ModelViewSet):
     queryset=Customer.objects.all()
     serializer_class=CustomerSerialiser
 
+
     def destroy(self, request, *args, **kwargs):
-        customer=Customer.objects.get(id=args.get("pk"))
+        customer=Customer.objects.get(id=kwargs.get("pk"))
         services=Service.objects.filter(customer=customer)
         s=[serv.status for serv in services if serv.status=="pending"]
         if s:
@@ -40,11 +41,6 @@ class CustomerViewset(ModelViewSet):
         servicer=Service.objects.filter(customer=customer)
         serialiser=ServiceSerialiser(servicer,many=True)
         return Response(data=serialiser.data)
-
-
-
-
-
 
 
 

@@ -25,3 +25,19 @@ export const addService=(id,data)=>{
 export const addCustomer=(data,header)=>{
     return commonApi("http://127.0.0.1:8000/customer/","POST",data,header)
 }
+
+export const deleteCustomer=(id)=>{
+    return commonApi(`http://127.0.0.1:8000/customer/${id}/`, "DELETE", "","")
+}
+
+export const deleteService=(id)=>{
+    return commonApi(`http://127.0.0.1:8000/service/${id}/`, "DELETE", "","")
+}
+
+export const getService=(id)=>{
+    return commonApi(`http://127.0.0.1:8000/service/${id}/`,"GET","","")
+}
+
+export const updateService=(id,data)=>{
+    return commonApi(`http://127.0.0.1:8000/service/${id}/`,"PUT",data,"")
+}

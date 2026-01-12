@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -6,11 +6,17 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { toast } from 'react-toastify';
 import { addService } from '../api/fetchApi';
+import { serviceaddContext } from '../ContextApi';
+
 
 function Addservice({id}) {
 
 
   const [show, setShow] = useState(false);
+
+
+  const {setServiceaddContextData} = useContext(serviceaddContext)
+
 
   const [service, setService] = useState({
     title: "", description: "", amount: "", exp_date: ""
@@ -28,7 +34,9 @@ function Addservice({id}) {
       addService(id,service).then((res)=>{
         console.log(res.data);
         toast("Service Added")  
-        handleClose()   
+        handleClose()
+        setServiceaddContextData(res)
+
       })
     }
   }
