@@ -32,6 +32,6 @@ routers.register('comment',views.CommentView,basename="comment_view")
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('token',authview.obtain_auth_token),
-    path('access', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('refresh', TokenRefreshView.as_view(), name='token_refresh'),
+    # path('access', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # path('refresh', TokenRefreshView.as_view(), name='token_refresh'),
 ]+routers.urls
