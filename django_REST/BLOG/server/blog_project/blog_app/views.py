@@ -22,6 +22,13 @@ class UserView(ModelViewSet):
         else:
             return Response(data=serializer.errors)
         
+    @action(methods=["GET"],detail=False,authentication_classes=[authentication.TokenAuthentication],permission_classes=[permissions.IsAuthenticated])
+    def post_list(self,request,*args,**kwargs):
+        user=request.user
+        all_post=PostModel.objects.filter(user=user)
+        serializer=PostSerializer(all_post,many=True)
+        return Response(data=serializer.data)
+        
 class ProfileView(ModelViewSet):
     queryset=ProfileModel.objects.all()
     serializer_class=ProfileSerializer
@@ -49,8 +56,8 @@ class ProfileView(ModelViewSet):
 class PostView(ModelViewSet):
     queryset=PostModel.objects.all()
     serializer_class=PostSerializer
-    # authentication_classes=[authentication.TokenAuthentication]
-    authentication_classes=[simplejwt_auth.JWTAuthentication]
+    authentication_classes=[authentication.TokenAuthentication]
+    # authentication_classes=[simplejwt_auth.JWTAuthentication]
     permission_classes=[permissions.IsAuthenticated]
 
     def perform_create(self,serializer):

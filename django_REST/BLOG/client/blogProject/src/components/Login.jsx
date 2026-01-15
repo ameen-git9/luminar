@@ -41,7 +41,7 @@ function Login() {
   return (
     <div className='container mt-5'>
 
-      <div className='border shadow p-5'>
+      <div className='border shadow p-5 '  >
         <h1 className='p-3 text-center'>Login</h1>
         <FloatingLabel controlId="floatingname" label="Username" className="mb-3" onChange={(e) => { setUser({ ...user, username: e.target.value }) }}>
           <Form.Control type="text" placeholder="..." />
