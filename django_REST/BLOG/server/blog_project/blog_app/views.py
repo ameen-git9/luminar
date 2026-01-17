@@ -5,11 +5,21 @@ from rest_framework.response import Response
 from blog_app.serializers import UserSerializer,ProfileSerializer,PostSerializer,CommentSerializer
 from blog_app.models import ProfileModel,PostModel,CommentModel
 from rest_framework import permissions, authentication
-from rest_framework.decorators import action
+from rest_framework.decorators import action,api_view,authentication_classes,permission_classes
 from rest_framework_simplejwt import authentication as simplejwt_auth
 
 
 # Create your views here.
+
+@api_view(["GET"])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def getdata(request,*args,**kwargs):
+    user=request.user
+    return Response({"id":user.id,"username":user.username})
+
+
+
 class UserView(ModelViewSet):
     queryset=User.objects.all()
     serializer_class=UserSerializer

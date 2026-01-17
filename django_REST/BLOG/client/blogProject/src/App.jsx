@@ -12,6 +12,10 @@ import './bootstrap.min.css'
 import Writerhome from './components/Writerhome'
 import Readerhome from './components/Readerhome'
 import Blogdetail from './components/Blogdetail'
+import Profilelist from './components/Profilelist'
+import { profileDetails } from './api/fetchApi'
+import Profiledetail from './components/Profiledetail'
+
 
 
 
@@ -28,6 +32,8 @@ function App() {
         <Route path='writer' element={<Writerhome />} />
         <Route path='reader' element={<Readerhome />} />
         <Route path='blog/:id' element={<Blogdetail />} />
+        <Route path='profile/list' element={<Profilelist />} />
+        <Route path='profile/detail/:id' element={<Profiledetail />} />
       </Routes>
       {/* <Footer/> */}
       <ToastContainer />

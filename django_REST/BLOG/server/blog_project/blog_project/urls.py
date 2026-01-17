@@ -36,4 +36,6 @@ urlpatterns = [
     path('token',authview.obtain_auth_token),
     # path('access', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('refresh', TokenRefreshView.as_view(), name='token_refresh'),
+    path('get/user',views.getdata)
+
 ] +routers.urls + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
