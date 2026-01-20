@@ -128,7 +128,7 @@ function Blogdetail() {
                                                 }}
                                                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
                                                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                                                <i className="fa-solid fa-heart fs-3"
+                                                <i className="fa-solid fa-heart fs-3 text-danger"
                                                     style={{
                                                         color: blog.isLiked ? "#dc3545" : "#e0e0e0",
                                                         cursor: "pointer",
