@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { profileDetails } from '../api/fetchApi'
+import { addFollower, getUserData, profileDetails, profileUnfollow } from '../api/fetchApi'
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/esm/Button';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+
+
 
 
 
@@ -15,21 +20,63 @@ function Profiledetail() {
 
     }
 
-    const {id} = useParams()
 
-    const[profile,setprofile]=useState({
-        user:{id:"",username:"",password:"",email:""},bio:"",profile_pic:""
+    const [profile, setprofile] = useState({
+        user: { id: "", username: "", password: "", email: "" }, bio: "", profile_pic: ""
     })
-    
 
-    useEffect(()=>{
-        profileDetails(id,header).then(res=>{
+    const [user, setUser] = useState({
+        id: "", username: ""
+    })
+
+    const [followers, setFollowers] = useState([])
+
+    const { id } = useParams()
+
+
+    useEffect(() => {
+        profileDetails(id, header).then(res => {
             console.log(res.data);
             setprofile(res.data)
+            setFollowers(res.data.followers_list)
 
-            
+
         })
-    },[])
+
+        getUserData(header).then(res => {
+            setUser(res.data)
+        })
+    }, [])
+
+
+console.log(profile);
+console.log(user);
+console.log(followers);
+
+
+
+    const isFollowing = followers.filter((res) => (res.id == user.id)).length > 0;
+
+    const unfollow = () => {
+        profileUnfollow(id, header).then((res) => {
+            console.log(res.data);
+            toast("UnFollowed")
+        })
+
+    }
+
+    const follow = () => {
+        addFollower(id, header).then((res) => {
+            console.log(res.data);
+            toast("Followed")
+
+
+
+        })
+
+    }
+
+
     return (
         <div className='d-flex justify-content-center align-items-center'>
             <div className='w-50 p-3'>
@@ -40,9 +87,11 @@ function Profiledetail() {
                         <Card.Text>
                             {profile.bio}
                         </Card.Text>
-
-
-                        <button className='btn btn-primary'>View</button>
+                        {
+                            isFollowing
+                                ? <Button onClick={unfollow} variant='secondary'>UnFollow</Button>
+                                : <Button onClick={follow} variant='primary'>Follow</Button>
+                        }
                     </Card.Body>
                 </Card>
             </div>

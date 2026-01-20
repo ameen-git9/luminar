@@ -45,7 +45,7 @@ function Profilelist() {
                                 <Card.Img
                                     variant="top"
                                     src={prof.profile_pic}
-                                    style={{height: "220px",objectFit: "cover"}}/>
+                                    style={{ height: "220px", objectFit: "cover" }} />
 
                                 <Card.Body className="d-flex flex-column">
                                     <Card.Title>{prof.user.username}</Card.Title>

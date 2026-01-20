@@ -63,3 +63,15 @@ export const listFoloowers=(id,header)=>{
 export const profileDetails=(id,header)=>{
     return commonApi(`http://127.0.0.1:8000/profile/${id}/`,"GET","",header)
 }
+
+export const getUserData=(header)=>{
+    return commonApi("http://127.0.0.1:8000/get/user","GET","",header)
+}
+
+export const profileUnfollow=(id,header)=>{
+        return commonApi(`http://127.0.0.1:8000/profile/${id}/unfollow/`,"DELETE","",header)
+}
+
+export const getUserProfile=(id)=>{
+        return commonApi(`http://127.0.0.1:8000/user/${id}/get_userprofile/`,"GET","","")
+}

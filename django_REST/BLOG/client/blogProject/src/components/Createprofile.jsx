@@ -31,7 +31,7 @@ function CreateProfile() {
             toast("Invalid data")
 
         }
-        else {
+       else {
             const formdata = new FormData
             formdata.append("bio", createprofile.bio)
             formdata.append("profile_pic", createprofile.profile_pic)

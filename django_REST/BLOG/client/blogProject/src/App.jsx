@@ -15,6 +15,8 @@ import Blogdetail from './components/Blogdetail'
 import Profilelist from './components/Profilelist'
 import { profileDetails } from './api/fetchApi'
 import Profiledetail from './components/Profiledetail'
+import Userprofile from './components/Userprofile'
+
 
 
 
@@ -34,6 +36,7 @@ function App() {
         <Route path='blog/:id' element={<Blogdetail />} />
         <Route path='profile/list' element={<Profilelist />} />
         <Route path='profile/detail/:id' element={<Profiledetail />} />
+        <Route path='user/profile/:id' element={<Userprofile />} />
       </Routes>
       {/* <Footer/> */}
       <ToastContainer />

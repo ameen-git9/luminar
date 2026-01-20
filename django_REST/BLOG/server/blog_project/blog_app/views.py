@@ -38,6 +38,15 @@ class UserView(ModelViewSet):
         all_post=PostModel.objects.filter(user=user)
         serializer=PostSerializer(all_post,many=True)
         return Response(data=serializer.data)
+    
+
+    @action(methods=['GET'],detail=True)
+    def get_userprofile(self,request,*args,**kwargs):
+        user=User.objects.get(id=kwargs.get("pk"))
+        profile=ProfileModel.objects.get(user=user)
+        serializer=ProfileSerializer(profile)
+        return Response(data=serializer.data)
+    
         
 class ProfileView(ModelViewSet):
     queryset=ProfileModel.objects.all()
@@ -62,6 +71,13 @@ class ProfileView(ModelViewSet):
         followers_list=profile.followers.all()
         serializer=UserSerializer(followers_list,many=True)
         return Response(data=serializer.data)
+    @action(methods=['DELETE'],detail=True)
+    def unfollow(self,request,*args,**kwargs):
+        profile=ProfileModel.objects.get(id=kwargs.get("pk"))
+        user=request.user
+        profile.followers.remove(user)
+        return Response({'msg':'unfollowed'})
+
     
 class PostView(ModelViewSet):
     queryset=PostModel.objects.all()
