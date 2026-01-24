@@ -75,3 +75,8 @@ export const profileUnfollow=(id,header)=>{
 export const getUserProfile=(id)=>{
         return commonApi(`http://127.0.0.1:8000/user/${id}/get_userprofile/`,"GET","","")
 }
+
+export const getWriterBlog = (id, header) => {
+    return commonApi(`http://127.0.0.1:8000/post/${id}/`,"GET","",header)
+}
+

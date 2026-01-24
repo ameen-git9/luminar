@@ -7,12 +7,16 @@ import Comment from './Comment';
 import { Addlikes, BlogDetails } from '../api/fetchApi';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { addlikeContext } from '../ContextApi';
 
 
 function Blogdetail() {
 
     const [blog, setblogs] = useState({})
     const { id } = useParams()
+
+    const {setaddlikeContextData,addlikeContextData}=useContext(addlikeContext)
 
     const header = {
         "Authorization": `token ${sessionStorage.getItem("token")}`,
@@ -25,11 +29,12 @@ function Blogdetail() {
             setblogs(res.data)
             sessionStorage.setItem("blogId", res.data.id)
         })
-    }, [])
+    }, [addlikeContextData])
 
     const blogLike = () => {
         Addlikes(id, header).then((res) => {
             console.log(res.data);
+            setaddlikeContextData(res.data)
             toast('likes added')
 
         })

@@ -78,9 +78,9 @@ function Writerhome() {
                                         <Card.Body className="d-flex flex-column">
                                             <Card.Title>{blog.title}</Card.Title>
                                             <Card.Text>{blog.caption}</Card.Text>
-                                            <Button variant="primary" className="mt-auto">
+                                            <Link to={`/writer/blog/${blog.id}`} variant="primary" className="btn btn-outline-info mt-auto">
                                                 View
-                                            </Button>
+                                            </Link>
                                         </Card.Body>
                                     </Card>
                                 </Col>

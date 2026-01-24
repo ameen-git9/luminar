@@ -13,10 +13,15 @@ function Addblog() {
 
 
 
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    
+    
+
 
     const header = {
         "Authorization": `token ${sessionStorage.getItem("token")}`,
@@ -41,6 +46,7 @@ function Addblog() {
             addBlog(formdata, header).then((res) => {
                 console.log(res.data);
                 toast("Blog Added Successfully..")
+                
                 handleClose()
             })
 

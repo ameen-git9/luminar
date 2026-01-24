@@ -16,6 +16,7 @@ import Profilelist from './components/Profilelist'
 import { profileDetails } from './api/fetchApi'
 import Profiledetail from './components/Profiledetail'
 import Userprofile from './components/Userprofile'
+import WriterBlogdetail from './components/WriterBlogdetail'
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route path='profile/list' element={<Profilelist />} />
         <Route path='profile/detail/:id' element={<Profiledetail />} />
         <Route path='user/profile/:id' element={<Userprofile />} />
+        <Route path='writer/blog/:id' element={<WriterBlogdetail />} />
       </Routes>
       {/* <Footer/> */}
       <ToastContainer />

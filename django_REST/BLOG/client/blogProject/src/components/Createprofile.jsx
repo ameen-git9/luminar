@@ -66,7 +66,7 @@ function CreateProfile() {
                         Close
                     </Button>
                     <Button variant="primary" onClick={formsubmit}>
-                        Save Changes
+                        CREATE PROFILE
                     </Button>
                 </Modal.Footer>
             </Modal>

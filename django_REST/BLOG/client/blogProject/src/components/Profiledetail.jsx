@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { addFollower, getUserData, profileDetails, profileUnfollow } from '../api/fetchApi'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/esm/Button';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { followContext, unfollowContext } from '../ContextApi';
+
 
 
 
@@ -20,6 +22,9 @@ function Profiledetail() {
 
     }
 
+
+    const{setfollowContextData,followContextData}=useContext(followContext)
+    const{setunfollowContextData,unfollowContextData}=useContext(unfollowContext)
 
     const [profile, setprofile] = useState({
         user: { id: "", username: "", password: "", email: "" }, bio: "", profile_pic: ""
@@ -46,7 +51,7 @@ function Profiledetail() {
         getUserData(header).then(res => {
             setUser(res.data)
         })
-    }, [])
+    }, [followContextData,unfollowContextData])
 
 
 console.log(profile);
@@ -60,6 +65,7 @@ console.log(followers);
     const unfollow = () => {
         profileUnfollow(id, header).then((res) => {
             console.log(res.data);
+            setunfollowContextData(res)
             toast("UnFollowed")
         })
 
@@ -68,6 +74,7 @@ console.log(followers);
     const follow = () => {
         addFollower(id, header).then((res) => {
             console.log(res.data);
+            setfollowContextData(res)
             toast("Followed")
 
 

@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import { blogDetails, listComments } from '../api/fetchApi';
 import { addComments } from '../api/fetchApi';
 import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { addCommentContext } from '../ContextApi';
 
 
 
@@ -26,6 +28,8 @@ function Comment() {
 
     const [count, setCount] = useState({})
 
+    const {setaddCommentContextData,addCommentContextData}=useContext(addCommentContext)
+
     useEffect(() => {
         listComments(id, header).then((res) => {
             console.log(res.data);
@@ -39,7 +43,7 @@ function Comment() {
         })
             .catch((err) => console.log(err));
 
-    }, [])
+    }, [addCommentContextData])
 
     const [newComment, setNewComment] = useState({
         comment: ""
@@ -49,6 +53,7 @@ function Comment() {
         addComments(id, newComment, header).then((res) => {
             console.log(res.data);
             setNewComment(res.data)
+            setaddCommentContextData(res)
             toast("Comment Added successfully")
             handleClose()
 
